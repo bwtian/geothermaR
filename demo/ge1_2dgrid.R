@@ -20,4 +20,5 @@ for (i in 1:10) {
 grid3d <- as.data.frame(do.call(rbind, xyz))
 colnames(grid3d) <- c("x","y","z")
 grid3d$value <- 10
+plot(grid3d)
 write.csv(grid3d, "grid3d.csv",quote = F, row.names = F) ## save to csv
