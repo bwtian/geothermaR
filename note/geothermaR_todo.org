@@ -1,0 +1,4 @@
+* Rules
+release name: Main.Sub.Patch 0.0.1
+** function name: package.(noun)(verb)noun
+It is important to know the package name when you use R, so show it obviously.
