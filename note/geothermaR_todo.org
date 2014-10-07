@@ -1,7 +1,8 @@
 * Rules
 ** Release name: Main.Sub.Patch  for example: 0.0.1
 ** Function name: package.(noun)(verb)noun
-It is important to know the package name when you use R, so show it more obviously.
+In my opinion,it is important to know the package name when you use R, 
+so show it more obviously.
 | Package    | Input |  Via | Output  | Output | Functions      |
 | geothermaR | type  | verb | content | type   | name           |
 |------------+-------+------+---------+--------+----------------|
