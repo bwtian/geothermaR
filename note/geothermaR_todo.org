@@ -14,14 +14,14 @@ so let us show it more obviously.
 | ge.        |       |      |         |        |                |
 |------------+-------+------+---------+--------+----------------|
 ** List of Abbreviations
-| Abbr. | Glossary                    | R Note           |
+| Abbr. | Glossary                    | R and GIS Note   |
 |-------+-----------------------------+------------------|
-| ge    | geothermaR                  | Package Name     |
+| ge.   | geothermaR                  | Package Name     |
 |-------+-----------------------------+------------------|
 | bbox  | Bounding box                | Extent of object |
 | crs   | coordinate reference system | CRS class        |
 | csv   | Comma Separate              |                  |
-| df    | data.frame                  | base class       |
+| df    | data.frame                  | data.frame class |
 | geo   | Geography reference system  | CRS class        |
 | grid  | Fishnet                     | GIS data format  |
 | lm    | Linear model                | lm class         |
@@ -33,6 +33,7 @@ so let us show it more obviously.
 | SP    | SpatialPolygon              | sp* class        |
 | SPDF  | SpatialPolygonDataFrame     | sp* class        |
 | kml   |                             | GIS data format  |
+| v     | vector                      | vector class     |
 | xy    | xy coordinate               | variable value   |
 | xyz   | xyz coordinate              | variable value   |
 |-------+-----------------------------+------------------|
