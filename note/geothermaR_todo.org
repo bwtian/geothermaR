@@ -13,55 +13,56 @@ so let us show it more obviously.
 | ge.        |       |      |         |        |                |
 | ge.        |       |      |         |        |                |
 |------------+-------+------+---------+--------+----------------|
-** List of Abbreviations
-| Abbr. | Glossaries                  | R and GIS Notes  |
-|-------+-----------------------------+------------------|
-| ge.   | geothermaR                  | Package Name     |
-|-------+-----------------------------+------------------|
-| bbox  | Bounding box                | Extent of object |
-| crs   | Coordinate Reference System | CRS class        |
-| csv   | Comma Separate Values       | Common format    |
-| df    | data.frame                  | data.frame class |
-| geo   | Geography reference system  | CRS class        |
-| grid  | Fishnet                     | GIS data format  |
-| lm    | Linear model                | lm class         |
-| prj   | Projected reference system  | CRS class        |
-| shp   | Shapefile                   | GIS data format  |
-| sp    | SpatialPoint                | sp* class        |
-| spdf  | SpatialPointDataFrame       | sp* class        |
-| sdlf  | SpatialLineDataFrame        | sp* class        |
-| SP    | SpatialPolygon              | sp* class        |
-| SPDF  | SpatialPolygonDataFrame     | sp* class        |
-| kml   | Keyhole Markup Language     | GIS data format  |
-| v     | vector                      | vector class     |
-| xy    | xy coordinate               | variable value   |
-| xyz   | xyz coordinate              | variable value   |
-|-------+-----------------------------+------------------|
+** List of Abbreviations in geothermaR
+| Abbr. | Glossaries                   | R and GIS Notes  |
+|-------+------------------------------+------------------|
+| ge.   | Geothermal Energy & Resource | Package Name     |
+|-------+------------------------------+------------------|
+| bbox  | Bounding box                 | Extent of object |
+| crs   | Coordinate Reference System  | CRS class        |
+| csv   | Comma Separate Values        | Common format    |
+| df    | data.frame                   | data.frame class |
+| geo   | Geography reference system   | CRS class        |
+| grid  | Fishnet                      | GIS data format  |
+| lm    | Linear model                 | lm class         |
+| prj   | Projected reference system   | CRS class        |
+| shp   | Shapefile                    | GIS data format  |
+| sp    | SpatialPoint                 | sp* class        |
+| spdf  | SpatialPointDataFrame        | sp* class        |
+| sdlf  | SpatialLineDataFrame         | sp* class        |
+| SP    | SpatialPolygon               | sp* class        |
+| SPDF  | SpatialPolygonDataFrame      | sp* class        |
+| kml   | Keyhole Markup Language      | GIS data format  |
+| v     | vector                       | vector class     |
+| xy    | xy coordinate                | variable value   |
+| xyz   | xyz coordinate               | variable value   |
+|-------+------------------------------+------------------|
 * R Functions
-** file:~/SparkleShare/geothermaR/R/ge.clearupDir.R
-** file:~/SparkleShare/geothermaR/R/ge.crsTransform.R
-** file:~/SparkleShare/geothermaR/R/ge.df2collars.R
-** file:~/SparkleShare/geothermaR/R/ge.df2csv.R
-** file:~/SparkleShare/geothermaR/R/ge.df2spWGS84.R
-** file:~/SparkleShare/geothermaR/R/ge.df2trajectories.R
-** file:~/SparkleShare/geothermaR/R/ge.df2voxlerSamples.R
-** file:~/SparkleShare/geothermaR/R/ge.findAreaSPDF.R
-** file:~/SparkleShare/geothermaR/R/ge.findLargestSPDF.R
-** file:~/SparkleShare/geothermaR/R/ge.geoCode.R
-** file:~/SparkleShare/geothermaR/R/ge.getGoogleMap.R
-** file:~/SparkleShare/geothermaR/R/ge.ggLmeqn.R
-** file:~/SparkleShare/geothermaR/R/ge.ggsave.R
-** file:~/SparkleShare/geothermaR/R/ge.kml2spdf.R
-** file:~/SparkleShare/geothermaR/R/ge.lm2df.R
-** file:~/SparkleShare/geothermaR/R/ge.slice100m.R
-** file:~/SparkleShare/geothermaR/R/ge.sp2shpGeo.R
-** file:~/SparkleShare/geothermaR/R/ge.sp2shpPrj.R
-** file:~/SparkleShare/geothermaR/R/ge.sp2SPDF .R
-** file:~/SparkleShare/geothermaR/R/ge.SPDF2grid.R
-** file:~/SparkleShare/geothermaR/R/ge.spdf2SPDF.R
-** file:~/SparkleShare/geothermaR/R/ge.urlTable.R
-** file:~/SparkleShare/geothermaR/R/ge.xy2bbox.R
-** file:~/SparkleShare/geothermaR/R/ge.xy2fishnet.R
+** ge.clearupDir: file:~/SparkleShare/geothermaR/R/ge.clearupDir.R
+** ge.crsTransform: file:~/SparkleShare/geothermaR/R/ge.crsTransform.R
+** ge.df2collars: file:~/SparkleShare/geothermaR/R/ge.df2collars.R
+** ge.df2csv: file:~/SparkleShare/geothermaR/R/ge.df2csv.R
+** ge.df2spWGS84: file:~/SparkleShare/geothermaR/R/ge.df2spWGS84.R
+** ge.df2trajectories: file:~/SparkleShare/geothermaR/R/ge.df2trajectories.R
+** ge.df2voxlerSamples: file:~/SparkleShare/geothermaR/R/ge.df2voxlerSamples.R
+** ge.findAreaSPDF: file:~/SparkleShare/geothermaR/R/ge.findAreaSPDF.R
+** ge.findLargestSPDF: file:~/SparkleShare/geothermaR/R/ge.findLargestSPDF.R
+** ge.geoCode: file:~/SparkleShare/geothermaR/R/ge.geoCode.R
+** ge.getGoogleMap: file:~/SparkleShare/geothermaR/R/ge.getGoogleMap.R
+** ge.ggLmeqn: file:~/SparkleShare/geothermaR/R/ge.ggLmeqn.R
+** ge.ggsave: file:~/SparkleShare/geothermaR/R/ge.ggsave.R
+** ge.kml2spdf: file:~/SparkleShare/geothermaR/R/ge.kml2spdf.R
+** ge.lm2df: file:~/SparkleShare/geothermaR/R/ge.lm2df.R
+** ge.slice100m: file:~/SparkleShare/geothermaR/R/ge.slice100m.R
+** ge.sp2shpGeo: file:~/SparkleShare/geothermaR/R/ge.sp2shpGeo.R
+** ge.sp2shpPrj: file:~/SparkleShare/geothermaR/R/ge.sp2shpPrj.R
+** ge.sp2SPDF: file:~/SparkleShare/geothermaR/R/ge.sp2SPDF.R
+** ge.SPDF2grid: file:~/SparkleShare/geothermaR/R/ge.SPDF2grid.R
+** ge.spdf2SPDF: file:~/SparkleShare/geothermaR/R/ge.spdf2SPDF.R
+** ge.urlTable: file:~/SparkleShare/geothermaR/R/ge.urlTable.R
+** ge.xy2bbox: file:~/SparkleShare/geothermaR/R/ge.xy2bbox.R
+** ge.xy2fishnet: file:~/SparkleShare/geothermaR/R/ge.xy2fishnet.R
 * R Demos
 [[file:~/SparkleShare/geothermaR/demo/ge1_2dgrid.R]]
 * R Manuals
+[[*R%20Demos][R Demos]]
