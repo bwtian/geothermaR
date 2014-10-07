@@ -1,4 +1,4 @@
-ge.rawBbox <- function(xmin,xmax,ymin,ymax,crs = NA){
+ge.xy2bboxSPDF <- function(xmin,xmax,ymin,ymax,crs = NA){
         ### Make a bbox rect SPDF from LL and TR point.
         Polygon  <- sp::Polygon(cbind(c(xmin, xmin, xmax, xmax, xmin),
                            c(ymin, ymax, ymax, ymin, ymin)))
