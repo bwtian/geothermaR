@@ -1,6 +1,7 @@
 ## then sample use sp package to get a 2D grid, and you can choose the type of grid, here is a regular one
-grid2d <- readRDS("~/Dropbox/2data/hkd//hkdmskbig_grdi2d1h.Rds")
-str(grid2d)
+raster2d <- readRDS("~/Dropbox/2data/hkd//hkdmskbig_grdi2d1h.Rds")
+grid2d  <- raster2d[]
+
 xy <- grid2d@coords
 xyz <- list()
 for (i in 1:10) {
