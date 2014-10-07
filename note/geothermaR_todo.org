@@ -1,4 +1,4 @@
-* Rules
+* R Rules
 ** Release name: Main.Sub.Patch  for example: 0.0.1
 ** Function name: package.(noun)(verb)noun
 In my opinion,it is important to know the package name when you use R, 
@@ -20,7 +20,7 @@ so let us show it more obviously.
 |-------+-----------------------------+------------------|
 | bbox  | Bounding box                | Extent of object |
 | crs   | Coordinate Reference System | CRS class        |
-| csv   | Comma Separate              |                  |
+| csv   | Comma Separate Values       | Common format    |
 | df    | data.frame                  | data.frame class |
 | geo   | Geography reference system  | CRS class        |
 | grid  | Fishnet                     | GIS data format  |
@@ -32,8 +32,11 @@ so let us show it more obviously.
 | sdlf  | SpatialLineDataFrame        | sp* class        |
 | SP    | SpatialPolygon              | sp* class        |
 | SPDF  | SpatialPolygonDataFrame     | sp* class        |
-| kml   |                             | GIS data format  |
+| kml   | Keyhole Markup Language     | GIS data format  |
 | v     | vector                      | vector class     |
 | xy    | xy coordinate               | variable value   |
 | xyz   | xyz coordinate              | variable value   |
 |-------+-----------------------------+------------------|
+* R Functions
+* R Demos
+* R Manuals
