@@ -7,7 +7,7 @@ geothermaR
 
 To cite geothermalR in publications use:
 
-### Tian, Bingwei. (2014). geothermaR: A R package for Geothermal and Geoheat Energy analysis and assessment. URL https://github.com/bwtian/geothermaR
+##### Tian, Bingwei. (2014). geothermaR: A R package for Geothermal and Geoheat Energy analysis and assessment. URL https://github.com/bwtian/geothermaR
 
 
 ### A BibTeX entry for LaTeX users is  
