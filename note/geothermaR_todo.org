@@ -4,9 +4,9 @@
 It is important to know the package name when you use R, so show it obviously.
 | geothermaR | noun | verb | noun | addition | Functions    |
 |------------+------+------+------+----------+--------------|
-| ge.        | sp   |    2 | shp  | geo      | ge.sp2shpGeo |
-| ge.        | df   |    2 | spdf |          |              |
-| ge.        |      |      |      |          |              |
+| ge.        | sp   |    2 | shp  | WGS      | ge.sp2shpWGS |
+| ge.        | df   |    2 | grid |          | ge.df2grid   |
+| ge.        | df   |    2 | grid | 3D       | ge.df2grid3D |
 | ge.        |      |      |      |          |              |
 | ge.        |      |      |      |          |              |
 | ge.        |      |      |      |          |              |
