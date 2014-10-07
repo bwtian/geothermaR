@@ -14,15 +14,22 @@ so let us show it more obviously.
 | ge.        |       |      |         |        |                |
 |------------+-------+------+---------+--------+----------------|
 ** List of Abbreviations
-| Abbr. | Glossary       | R Note         |
-|------+----------------+----------------|
-| ge   | geothermaR     | Package Name   |
-|------+----------------+----------------|
-| bbox | Bounding box   |                |
-| df   | data.frame     | base class     |
-| shp  | Shapefile      |                |
-| sp   | SpatialPoint   | sp* class      |
-| kml  |                |                |
-| xy   | xy coordinate  | variable value |
-| xyz  | xyz coordinate | variable value |
-|------+----------------+----------------|
+| Abbr. | Glossary              | R Note           |
+|-------+-----------------------+------------------|
+| ge    | geothermaR            | Package Name     |
+|-------+-----------------------+------------------|
+| bbox  | Bounding box          | Extent of object |
+| crs   | coordinate system     | CRS class        |
+| csv   | Comma Separate        |                  |
+| df    | data.frame            | base class       |
+| shp   | Shapefile             | GIS data format  |
+| sp    | SpatialPoint          | sp* class        |
+| spdf  | SpatialPointDataFrame |                  |
+| sdlf  | SpatialLineDataFrame  |                  |
+| SP    | SpatialPolygonData    |                  |
+| SPDF  |                       |                  |
+|       |                       |                  |
+| kml   |                       | GIS data format  |
+| xy    | xy coordinate         | variable value   |
+| xyz   | xyz coordinate        | variable value   |
+|-------+-----------------------+------------------|
