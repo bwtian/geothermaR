@@ -1,3 +1,18 @@
+library(sp)
+library(rgdal)
+library(gdalUtils)
+library(maptools)
+library(raster)
+library(rasterVis)
+library(plotKML)
+library(gstat)
+library(plyr)
+library(rgeos)
+library(ggplot2)
+library(ggmap)
+
+library(lattice)
+library(latticeExtra)
 # Extent of Study area of Japan in Phd Thesis
 xlimJP <- c(128.5, 146.5)
 ylimJP <- c(30.2, 45.8)
