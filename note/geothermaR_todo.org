@@ -2,13 +2,13 @@
 ** Release name: Main.Sub.Patch  for example: 0.0.1
 ** Function name: package.(noun)(verb)noun
 It is important to know the package name when you use R, so show it obviously.
-| geothermaR | noun | verb | noun | addition |
-|------------+------+------+------+----------|
-| ge.        | sp   |    2 | shp  | geo      |
-| ge.        | df   |    2 | spdf |          |
-| ge.        |      |      |      |          |
-| ge.        |      |      |      |          |
-| ge.        |      |      |      |          |
-| ge.        |      |      |      |          |
-|------------+------+------+------+----------|
+| geothermaR | noun | verb | noun | addition | Functions    |
+|------------+------+------+------+----------+--------------|
+| ge.        | sp   |    2 | shp  | geo      | ge.sp2shpGeo |
+| ge.        | df   |    2 | spdf |          |              |
+| ge.        |      |      |      |          |              |
+| ge.        |      |      |      |          |              |
+| ge.        |      |      |      |          |              |
+| ge.        |      |      |      |          |              |
+|------------+------+------+------+----------+--------------|
 
