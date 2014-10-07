@@ -14,12 +14,12 @@ so let us show it more obviously.
 | ge.        |       |      |         |        |                |
 |------------+-------+------+---------+--------+----------------|
 ** List of Abbreviations
-| Abbr. | Glossary                    | R and GIS Note   |
+| Abbr. | Glossaries                  | R and GIS Notes  |
 |-------+-----------------------------+------------------|
 | ge.   | geothermaR                  | Package Name     |
 |-------+-----------------------------+------------------|
 | bbox  | Bounding box                | Extent of object |
-| crs   | coordinate reference system | CRS class        |
+| crs   | Coordinate Reference System | CRS class        |
 | csv   | Comma Separate              |                  |
 | df    | data.frame                  | data.frame class |
 | geo   | Geography reference system  | CRS class        |
