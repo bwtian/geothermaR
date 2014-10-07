@@ -23,6 +23,8 @@ so let us show it more obviously.
 | csv   | Comma Separate              |                  |
 | df    | data.frame                  | base class       |
 | geo   | Geography reference system  | CRS class        |
+| grid  | Fishnet                     | GIS data format  |
+| lm    | Linear model                | lm class         |
 | prj   | Projected reference system  | CRS class        |
 | shp   | Shapefile                   | GIS data format  |
 | sp    | SpatialPoint                | sp* class        |
