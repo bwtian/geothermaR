@@ -38,5 +38,30 @@ so let us show it more obviously.
 | xyz   | xyz coordinate              | variable value   |
 |-------+-----------------------------+------------------|
 * R Functions
+** file:~/SparkleShare/geothermaR/R/ge.clearupDir.R
+** file:~/SparkleShare/geothermaR/R/ge.crsTransform.R
+** file:~/SparkleShare/geothermaR/R/ge.df2collars.R
+** file:~/SparkleShare/geothermaR/R/ge.df2csv.R
+** file:~/SparkleShare/geothermaR/R/ge.df2spWGS84.R
+** file:~/SparkleShare/geothermaR/R/ge.df2trajectories.R
+** file:~/SparkleShare/geothermaR/R/ge.df2voxlerSamples.R
+** file:~/SparkleShare/geothermaR/R/ge.findAreaSPDF.R
+** file:~/SparkleShare/geothermaR/R/ge.findLargestSPDF.R
+** file:~/SparkleShare/geothermaR/R/ge.geoCode.R
+** file:~/SparkleShare/geothermaR/R/ge.getGoogleMap.R
+** file:~/SparkleShare/geothermaR/R/ge.ggLmeqn.R
+** file:~/SparkleShare/geothermaR/R/ge.ggsave.R
+** file:~/SparkleShare/geothermaR/R/ge.kml2spdf.R
+** file:~/SparkleShare/geothermaR/R/ge.lm2df.R
+** file:~/SparkleShare/geothermaR/R/ge.slice100m.R
+** file:~/SparkleShare/geothermaR/R/ge.sp2shpGeo.R
+** file:~/SparkleShare/geothermaR/R/ge.sp2shpPrj.R
+** file:~/SparkleShare/geothermaR/R/ge.sp2SPDF .R
+** file:~/SparkleShare/geothermaR/R/ge.SPDF2grid.R
+** file:~/SparkleShare/geothermaR/R/ge.spdf2SPDF.R
+** file:~/SparkleShare/geothermaR/R/ge.urlTable.R
+** file:~/SparkleShare/geothermaR/R/ge.xy2bbox.R
+** file:~/SparkleShare/geothermaR/R/ge.xy2fishnet.R
 * R Demos
+[[file:~/SparkleShare/geothermaR/demo/ge1_2dgrid.R]]
 * R Manuals
