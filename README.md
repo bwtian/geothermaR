@@ -1,6 +1,6 @@
 geothermaR
 ==========
-
+[![DOI](https://zenodo.org/badge/6456/bwtian/geothermaR.png)](http://dx.doi.org/10.5281/zenodo.11978)
 ## geothermaR: A R package for Geothermal and Geoheat Energy analysis and assessment
 
 "Programers have invested a lot of time and effort in coding and creating package, please kindly cite it when using codes, demos, data or notes for your data analysis and mapping."
