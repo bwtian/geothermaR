@@ -19,4 +19,5 @@ title = {{geothermaR: A R package for Geothermal and Geoheat Energy analysis and
 howpublished={GitHub: https://github.com/bwtian/gothermaR},  
 url = {https://github.com/bwtian/geothermaR},  
 year = {2014},  
+doi = {10.5281/zenodo.11978}  
 }  
