@@ -1,0 +1,6 @@
+codeDir <- "~/Dropbox/1code"
+dataDir <- "~/Dropbox/2data"
+dataData <- "~/Dropbox/2data/data"
+dataRaw <- "~/Dropbox/2data/dataRaw"
+dataPro <- "~/Dropbox/2data/dataProduct"
+figsDir <- "~/Dropbox/3figs"
