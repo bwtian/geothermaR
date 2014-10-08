@@ -10,9 +10,9 @@ now <- format(Sys.time(), "_%y%m%d_%H%M%S")
 # } else if (paper  == 3 ){
 #         width = 2.09
 # }
-pngName  <- paste0(deparse(substitute(name)), ".png")
-tifName  <- paste0(deparse(substitute(name)), ".tiff")
-pdfName  <- paste0(deparse(substitute(name)), ".pdf")
+pngName  <- paste0(deparse(substitute(name)), now, ".png")
+tifName  <- paste0(deparse(substitute(name)), now, ".tiff")
+pdfName  <- paste0(deparse(substitute(name)), now, ".pdf")
 ggsave(pngName,scale = scale, dpi = dpi)
 ggsave(tifName,scale = scale, dpi = dpi)
 ggsave(pdfName,scale = scale, dpi = dpi)
