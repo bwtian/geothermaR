@@ -13,7 +13,7 @@ if (paper == 1) {
 pngName  <- paste0(deparse(substitute(name)), ".png")
 tifName  <- paste0(deparse(substitute(name)), ".tiff")
 pdfName  <- paste0(deparse(substitute(name)), ".pdf")
-ggsave(pngName,width = width, height = height, scale = scale, dpi = dpi)
-ggsave(tifName,width = width, height = height, scale = scale, dpi = dpi)
-ggsave(pdfName,width = width, height = height, scale = scale, dpi = dpi)
+ggsave(pngName,width = width, scale = scale, dpi = dpi)
+ggsave(tifName,width = width, scale = scale, dpi = dpi)
+ggsave(pdfName,width = width, scale = scale, dpi = dpi)
 }
