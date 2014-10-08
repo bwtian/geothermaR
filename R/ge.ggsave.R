@@ -9,4 +9,3 @@ ggsave(pngName,width = width, height = height, scale = scale, dpi = dpi)
 ggsave(tifName,width = width, height = height, scale = scale, dpi = dpi)
 ggsave(pdfName,width = width, height = height, scale = scale, dpi = dpi)
 }
-ggsave
