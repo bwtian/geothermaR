@@ -8,5 +8,4 @@ pdfName  <- paste0(deparse(substitute(name)), ".pdf")
 ggsave(pngName,scale = scale, dpi = 300)
 ggsave(tifName,scale = scale, dpi = 300)
 ggsave(pdfName,scale = scale, dpi = 300)
-setwd(wd)
 }
