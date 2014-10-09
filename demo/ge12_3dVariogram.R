@@ -11,7 +11,7 @@ x  <- hkdbh$x_lccwgs84
 y  <- hkdbh$y_lccwgs84
 z  <- hkdbh$Depths
 t  <- hkdbh$Temperature
-tLog  <- log10(hkdbh$Temperature)
+Tlog  <- log10(hkdbh$Temperature)
 xyzv  <- as.data.frame(cbind(x,y,z,t,Tlog))
 class(xyzv)
 df  <- na.omit(xyzv)
