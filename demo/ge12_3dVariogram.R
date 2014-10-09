@@ -58,9 +58,16 @@ plot(vgmT, vgmTok)
 
 
 vgmTlog <- variogram(logT ~1, spdf, cutoff = 2500)
-vgmTlog <- variogram(logT ~z, spdf, cutoff = 2500,  width = 100, alpha = c(0,45,90,135))
+## Universal
+vgmTlog <- variogram(logT ~z, spdf, cutoff = 2500, alpha = c(0,45,90,135), beta = c(0,45,90,135))
+# Trend
+trend  <- gstat(NULL, "trend", logT ~ z^2, data = spdf)
+vgmTlog  <- variogram(trend, cutoff = 2500)
 vgmTlog
 plot(vgmTlog)
+
+
+
 
 vgmGauTlog <- fit.variogram(vgmTlog, vgm(0.08, "Gau", 2500, 0))
 vgmGauTlog
@@ -71,6 +78,7 @@ vgmSphTlog <- fit.variogram(vgmTlog, vgm(0.08, "Sph", 2500, 0))
 vgmSphTlog
 plot(vgmTlog, vgmSphTlog)
 attr(vgmSphTlog, "SSErr")
+
 vgmExpTlog <- fit.variogram(vgmTlog, vgm(0.08, "Exp", 2500, 0))
 vgmExpTlog
 plot(vgmTlog, vgmExpTlog)
