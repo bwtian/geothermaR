@@ -27,7 +27,7 @@ gridded(grid) <- TRUE
 head(grid)
 ## 3D IDW
 ## 3D variogram
-vgmT <- variogram(t~ z, spdf, cutoff = 2500)
+vgmT <- variogram(t ~ x+y+z, spdf, cutoff = 2500)
 vgmT
 plot(vgmT)
 
@@ -54,7 +54,8 @@ plot(vgmT, vgmTok)
 ### log plot
 
 
-vgmTlog <- variogram(logT ~ x+y+z, spdf, cutoff = 2500)
+vgmTlog <- variogram(logT ~1, spdf, cutoff = 2500, width = 100)
+vgmTlog <- variogram(logT ~z, spdf, cutoff = 2500,  width = 100, alpha = c(0,45,90,135))
 vgmTlog
 plot(vgmTlog)
 
