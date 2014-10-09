@@ -11,8 +11,8 @@ x  <- hkdbh$x_lccwgs84
 y  <- hkdbh$y_lccwgs84
 z  <- hkdbh$Depths
 t  <- hkdbh$Temperature
-logT  <- log10(hkdbh$Temperature)
-xyzv  <- as.data.frame(cbind(x,y,z,t,logT))
+tLog  <- log10(hkdbh$Temperature)
+xyzv  <- as.data.frame(cbind(x,y,z,t,Tlog))
 class(xyzv)
 df  <- na.omit(xyzv)
 summary(df)
@@ -25,6 +25,56 @@ coordinates(grid) <- ~x+y+z
 proj4string(grid)  <- CRS(lccWgs84)
 gridded(grid) <- TRUE
 head(grid)
+
+### log plot
+
+
+vgmTlog <- variogram(Tlog ~ 1, spdf, cutoff = 2500)
+## Universal Kriging
+vgmTlog <- variogram(Tlog ~ z, spdf, cutoff = 2500)
+#vgmTlog <- variogram(logT ~ z, spdf, cutoff = 2500, alpha = c(0,45,90,135), beta = c(0,45,90,135))
+# Trend
+#trend  <- gstat(NULL, "trend", logT ~ z^2, data = spdf)
+#vgmTlog  <- variogram(trend, cutoff = 2500)
+vgmTlog
+plot(vgmTlog)
+
+
+
+vgmGauTlog <- fit.variogram(vgmTlog, vgm(0.08, "Gau", 2500, 0))
+vgmGauTlog
+plot(vgmTlog, vgmGauTlog)
+attr(vgmGauTlog, "SSErr")
+Tlog_uk <- krige(Tlog~z, spdf, grid, model = vgmGauTlog)
+
+
+
+
+vgmSphTlog <- fit.variogram(vgmTlog, vgm(0.08, "Sph", 2500, 0))
+vgmSphTlog
+plot(vgmTlog, vgmSphTlog)
+attr(vgmSphTlog, "SSErr")
+
+vgmExpTlog <- fit.variogram(vgmTlog, vgm(0.08, "Exp", 2500, 0))
+vgmExpTlog
+plot(vgmTlog, vgmExpTlog)
+attr(vgmExpTlog, "SSErr")
+vgmLinTlog <- fit.variogram(vgmTlog, vgm(0.08, "Lin", 2500, 0))
+vgmLinTlog
+plot(vgmTlog, vgmLinTlog)
+attr(vgmLinTlog, "SSErr")
+vgmMatTlog <- fit.variogram(vgmTlog, vgm(0.08, "Mat", 2500, 0, kappa=3))
+vgmMatTlog
+plot(vgmTlog, vgmMatTlog)
+attr(vgmMatTlog, "SSErr")
+
+
+vgmTlogok  <- fit.variogram(vgmTlog, vgmSphTlog)
+vgmTlogok
+plot(vgmTlog, vgmTlogok)
+
+
+
 ## 3D IDW
 
 head(vgm())
@@ -54,37 +104,3 @@ attr(vgmMatT, "SSErr")
 vgmTok  <- fit.variogram(vgmT, vgmSphT)
 vgmTok
 plot(vgmT, vgmTok)
-### log plot
-
-
-vgmTlog <- variogram(logT ~1, spdf, cutoff = 2500)
-vgmTlog <- variogram(logT ~z, spdf, cutoff = 2500,  width = 100, alpha = c(0,45,90,135))
-vgmTlog
-plot(vgmTlog)
-
-vgmGauTlog <- fit.variogram(vgmTlog, vgm(0.08, "Gau", 2500, 0))
-vgmGauTlog
-plot(vgmTlog, vgmGauTlog)
-attr(vgmGauTlog, "SSErr")
-
-vgmSphTlog <- fit.variogram(vgmTlog, vgm(0.08, "Sph", 2500, 0))
-vgmSphTlog
-plot(vgmTlog, vgmSphTlog)
-attr(vgmSphTlog, "SSErr")
-vgmExpTlog <- fit.variogram(vgmTlog, vgm(0.08, "Exp", 2500, 0))
-vgmExpTlog
-plot(vgmTlog, vgmExpTlog)
-attr(vgmExpTlog, "SSErr")
-vgmLinTlog <- fit.variogram(vgmTlog, vgm(0.08, "Lin", 2500, 0))
-vgmLinTlog
-plot(vgmTlog, vgmLinTlog)
-attr(vgmLinTlog, "SSErr")
-vgmMatTlog <- fit.variogram(vgmTlog, vgm(0.08, "Mat", 2500, 0, kappa=3))
-vgmMatTlog
-plot(vgmTlog, vgmMatTlog)
-attr(vgmMatTlog, "SSErr")
-
-
-vgmTlogok  <- fit.variogram(vgmTlog, vgmSphTlog)
-vgmTlogok
-plot(vgmTlog, vgmTlogok)
