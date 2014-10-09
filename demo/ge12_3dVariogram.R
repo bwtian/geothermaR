@@ -1,7 +1,5 @@
-
-source("~/SparkleShare/Rprofile/demo/rSettings.R")
+source("~/SparkleShare/Rprofile/R/Rsettings/phdRsettings.R")
 # load data and grid
-options(digits = 3)
 hkdbhs  <- readRDS("~/Dropbox//2data//dataProduct//hkd//hkd_profiles_140806_164333.Rds")
 hkd3dgrid  <- readRDS("~/Dropbox/2data/hkd/hkf1k3d1h-1k_df.Rds")
 
@@ -28,8 +26,6 @@ proj4string(grid)  <- CRS(lccWgs84)
 gridded(grid) <- TRUE
 head(grid)
 ## 3D IDW
-grid$tIDW1 <- idw(logT ~ 1,spdf,grid, idp = 1)$var1.pred
-grid$tIDW2 <- idw(logT ~ 1,spdf,grid, idp = 1)$var1.pred
 ## 3D variogram
 vgmT <- variogram(t~ 1, spdf, cutoff = 2500)
 vgmT
