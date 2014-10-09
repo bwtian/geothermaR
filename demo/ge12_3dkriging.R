@@ -4,7 +4,12 @@ library(lattice)
 source("~/SparkleShare/geothermaR/demo/rSettings.R")
 # load data and grid
 hkdbh  <- readRDS("~/Dropbox//2data//dataProduct//hkd//hkd_profiles_140806_164333.Rds")
+hkdbh  <- readRDS("~/Share500sda//2data//dataProduct//hkd//hkd_profiles_140806_164333.Rds")
+hkd3dgrid  <- readRDS("~/Share500sda/2data/hkd/hkd_grd3d0110k_140527_223205.Rds")
+hist(log2(hkdbh$Temperature))
+## simple
 hkd3dgrid  <- readRDS("~/Dropbox/2data/hkd/hkd_grd3d0110k_140527_223205.Rds")
+hkd3dgrid  <- readRDS("~/Share500sda/2data/hkd/hkf1k3d1h-1k_df.Rds")
 hist(log2(hkdbh$Temperature))
 ## simple
 
@@ -25,4 +30,4 @@ gridded(grid) <- TRUE
 head(grid)
 
 ## 3D IDW
-grid$vIDW <- idw(v~1,spdf,grid)$var1.pred
+grid$vIDW <- krige(v~1,spdf,grid)$var1.pred
