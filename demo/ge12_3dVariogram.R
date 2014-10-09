@@ -26,6 +26,9 @@ proj4string(grid)  <- CRS(lccWgs84)
 gridded(grid) <- TRUE
 head(grid)
 ## 3D IDW
+
+head(vgm())
+
 ## 3D variogram
 vgmT <- variogram(t ~ x+y+z, spdf, cutoff = 2500)
 vgmT
@@ -54,10 +57,15 @@ plot(vgmT, vgmTok)
 ### log plot
 
 
-vgmTlog <- variogram(logT ~1, spdf, cutoff = 2500, width = 100)
+vgmTlog <- variogram(logT ~1, spdf, cutoff = 2500)
 vgmTlog <- variogram(logT ~z, spdf, cutoff = 2500,  width = 100, alpha = c(0,45,90,135))
 vgmTlog
 plot(vgmTlog)
+
+vgmGauTlog <- fit.variogram(vgmTlog, vgm(0.08, "Gau", 2500, 0))
+vgmGauTlog
+plot(vgmTlog, vgmGauTlog)
+attr(vgmGauTlog, "SSErr")
 
 vgmSphTlog <- fit.variogram(vgmTlog, vgm(0.08, "Sph", 2500, 0))
 vgmSphTlog
