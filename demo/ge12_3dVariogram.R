@@ -45,7 +45,7 @@ vgmGauTlog <- fit.variogram(vgmTlog, vgm(0.08, "Gau", 2500, 0))
 vgmGauTlog
 plot(vgmTlog, vgmGauTlog)
 attr(vgmGauTlog, "SSErr")
-Tlog_uk <- krige(Tlog~z, spdf, grid, model = vgmGauTlog)
+grid$TlogUK <- krige(Tlog~z, spdf, grid, model = vgmGauTlog)
 
 
 
