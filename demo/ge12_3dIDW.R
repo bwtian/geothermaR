@@ -37,9 +37,7 @@ x  <- hkdbh$x_lccwgs84
 y  <- hkdbh$y_lccwgs84
 z  <- hkdbh$Depths
 t  <- hkdbh$Temperature
-Tlog  <- log(hkdbh$Temperature)
-
-xyzv  <- as.data.frame(cbind(x,y,z,t,Tlog))
+xyzv  <- as.data.frame(cbind(x,y,z,t))
 class(xyzv)
 df  <- na.omit(xyzv)
 summary(df)
@@ -53,5 +51,5 @@ proj4string(grid)  <- CRS(lccWgs84)
 gridded(grid) <- TRUE
 head(grid)
 ## 3D IDW
-grid$tIDW1 <- idw(logT ~ 1,spdf,grid, idp = 1)$var1.pred
-grid$tIDW2 <- idw(logT ~ 1,spdf,grid, idp = 1)$var1.pred
+grid$TIDW1 <- idw(logT ~ 1,spdf,grid, idp = 1)$var1.pred
+grid$TIDW2 <- idw(logT ~ 1,spdf,grid, idp = 2)$var1.pred
