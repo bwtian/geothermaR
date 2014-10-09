@@ -1,23 +1,45 @@
-library(sp)
-library(gstat)
-library(lattice)
-library(rasterVis)
-source("~/SparkleShare/geothermaR/demo/rSettings.R")
+source("~/SparkleShare/Rprofile/R/Rsettings/phdRsettings.R")
 # load data and grid
-options(digits = 3)
 hkdbhs  <- readRDS("~/Dropbox//2data//dataProduct//hkd//hkd_profiles_140806_164333.Rds")
 hkd3dgrid  <- readRDS("~/Dropbox/2data/hkd/hkf1k3d1h-1k_df.Rds")
 
 ## simple
 
 hkdbh  <- hkdbhs[hkdbhs$Depths >=100 & hkdbhs$Depths <=1000,]
-hist(log(hkdbh$Temperature))
+Temp <- (hkdbh$Temperature)
+Le <- log(hkdbh$Temperature)
+L10 <- log10(hkdbh$Temperature)
+L2 <-  log2(hkdbh$Temperature)
+hist(Temp)
+hist(Le, 100)
+hist(L10,100)
+hist(L2,100)
+qqnorm(Temp)
+qqline(Temp, col="red", lwd=3)
+qqnorm(Le)
+qqline(Le, col="red", lwd=3)
+qqnorm(L10)
+qqline(L10, col="red", lwd=3)
+qqnorm(L2)
+qqline(L2, col="red", lwd=3)
+ks.test(Temp, "pnorm", mean = mean(Temp), sd =sd(Temp))
+ks.test(Le, "pnorm", mean = mean(Le), sd =sd(Le))
+ks.test(L2, "pnorm", mean = mean(L2), sd =sd(L2))
+ks.test(L10, "pnorm", mean = mean(L10), sd =sd(L10))
+library("nortest")
+ad.test(Le)
+ad.test(L2)
+ad.test(L10)
+ad.test(Temp)
+library("energy")
+mvnorm.etest(Le)
 x  <- hkdbh$x_lccwgs84
 y  <- hkdbh$y_lccwgs84
 z  <- hkdbh$Depths
 t  <- hkdbh$Temperature
-logT  <- log10(hkdbh$Temperature)
-xyzv  <- as.data.frame(cbind(x,y,z,t,logT))
+Tlog  <- log(hkdbh$Temperature)
+
+xyzv  <- as.data.frame(cbind(x,y,z,t,Tlog))
 class(xyzv)
 df  <- na.omit(xyzv)
 summary(df)
@@ -33,57 +55,3 @@ head(grid)
 ## 3D IDW
 grid$tIDW1 <- idw(logT ~ 1,spdf,grid, idp = 1)$var1.pred
 grid$tIDW2 <- idw(logT ~ 1,spdf,grid, idp = 1)$var1.pred
-## 3D variogram
-vgmT <- variogram(t~ 1, spdf, cutoff = 2500)
-vgmT
-plot(vgmT)
-
-vgmSphT <- fit.variogram(vgmT, vgm(3000, "Sph", 2500, 0))
-vgmSphT
-plot(vgmT, vgmSphT)
-attr(vgmSphT, "SSErr")
-vgmExpT <- fit.variogram(vgmT, vgm(3000, "Exp", 2500, 0))
-vgmExpT
-plot(vgmT, vgmExpT)
-attr(vgmExpT, "SSErr")
-vgmLinT <- fit.variogram(vgmT, vgm(3000, "Lin", 2500, 0))
-vgmLinT
-plot(vgmT, vgmLinT)
-attr(vgmLinT, "SSErr")
-vgmMatT <- fit.variogram(vgmT, vgm(3000, "Mat", 2500, 0, kappa=3))
-vgmMatT
-plot(vgmT, vgmMatT)
-attr(vgmMatT, "SSErr")
-
-vgmTok  <- fit.variogram(vgmT, vgmSphT)
-vgmTok
-plot(vgmT, vgmTok)
-### log plot
-
-
-vgmTlog <- variogram(logT ~ 1, spdf, cutoff = 2500)
-vgmTlog
-plot(vgmTlog)
-
-vgmSphTlog <- fit.variogram(vgmTlog, vgm(0.08, "Sph", 2500, 0))
-vgmSphTlog
-plot(vgmTlog, vgmSphTlog)
-attr(vgmSphTlog, "SSErr")
-vgmExpTlog <- fit.variogram(vgmTlog, vgm(0.08, "Exp", 2500, 0))
-vgmExpTlog
-plot(vgmTlog, vgmExpTlog)
-attr(vgmExpTlog, "SSErr")
-vgmLinTlog <- fit.variogram(vgmTlog, vgm(0.08, "Lin", 2500, 0))
-vgmLinTlog
-plot(vgmTlog, vgmLinTlog)
-attr(vgmLinTlog, "SSErr")
-vgmMatTlog <- fit.variogram(vgmTlog, vgm(0.08, "Mat", 2500, 0, kappa=3))
-vgmMatTlog
-plot(vgmTlog, vgmMatTlog)
-attr(vgmMatTlog, "SSErr")
-
-
-vgmTlogok  <- fit.variogram(vgmTlog, vgmSphTlog)
-vgmTlogok
-plot(vgmTlog, vgmTlogok)
-
