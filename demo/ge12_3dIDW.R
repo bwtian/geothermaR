@@ -62,15 +62,22 @@ summary(IDWz)
 IDWz2 <- idw(t ~ x^2+y^2+z^3,spdf,grid, idp = 2)
 class(IDW2)
 sgdf  <- as(IDW2, "SpatialGridDataFrame")
-plot3D(raster(spdf))
-r  <- stack(sgdf)
-r  <- brick(sgdf)
-r  <- raster(sgdf)
+sgdfi  <- as.image.SpatialGridDataFrame(sgdf)
 
+summary(sgdf)
+# plot3D(raster(spdf))
+# r  <- stack(sgdfi)
+# r  <- brick(sgdf)
+r  <- raster(sgdfi)
+str(r)
 plot(r)
 class(r)
 str(r)
 plot3D(r)
+decorate3d(r)
+snapshot3d("hkd3d.png")
+
+getwd()
 library(lattice)
 IDW1.df  <- as.data.frame(IDW1)
 IDW2.df  <- as.data.frame(IDW2)
@@ -103,3 +110,25 @@ plot3d(IDW2.df[,1:3])
 persp3d(IDW2.df[,1:3])
 wireframe(z ~ x * y, data=IDW2.df)
 surface3d
+
+###
+library(plot3D)
+head(IDW2.df)
+x  <- IDW2.df[1]
+y  <- IDW2.df[2]
+z  <- IDW2.df[3]
+
+V  <- IDW2.df[4]
+M  <- mesh(x,y,z)
+colvar <- with(M, x*exp(-x^2 - y^2 - z^2))
+scatter2D(M$x, M$y, M$z, V, pch = 15, cex = 5)
+slice3D (x,y,z,colvar,theta = 60)
+x <- y <- z <- seq(-1, 1, by = 0.1)
+grid   <- mesh(x, y, z)
+colvar <- with(grid, x*exp(-x^2 - y^2 - z^2))
+x
+y
+z
+str(colvar)
+example(points3D)
+
