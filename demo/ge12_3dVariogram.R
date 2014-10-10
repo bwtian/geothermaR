@@ -34,7 +34,10 @@ uk_r  <- raster(Tlog_uk)
 ### log plot
 
 uk.df  <- as.data.frame(Tlog_uk)
+uk.df$Tuk  <- 10^uk.df$var1.pred
+uk.df$TukCol  <- as.factor(round(uk.df$Tuk ))
 head(uk.df)
+summary(uk.df)
 library(rgl)
 
 vgmTlog <- variogram(Tlog ~ 1, spdf, cutoff = 2500)
