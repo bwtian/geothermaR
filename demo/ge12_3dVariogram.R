@@ -32,20 +32,7 @@ gridded(grid) <- TRUE
 head(grid)
 ### log plot
 
-uk.df  <- as.data.frame(Tlog_uk)
-uk.df$Tuk  <- 10^uk.df$var1.pred
-uk.df$TukCol  <- as.factor(round(uk.df$Tuk ))
-head(uk.df)
-summary(uk.df)
-#ge.df2csv(uk.df)
-#### 3D
-if(require(scatterplot3d)){
-        scatterplot3d(uk.df[,c(1,2,3)])
-}
 
-
-getwd()
-library(rgl)
 
 vgmTlog <- variogram(Tlog ~ 1, spdf, cutoff = 2500)
 ## Universal Kriging
@@ -64,8 +51,25 @@ vgmGauTlog
 plot(vgmTlog, vgmGauTlog)
 attr(vgmGauTlog, "SSErr")
 grid$TlogUK <- krige(Tlog~z, spdf, grid, model = vgmGauTlog)
-grid$TlogUK  <- Tlog_uk$var1.pred
-head(grid@data)
+uk.df  <- as.data.frame(Tlog_uk)
+uk.df$Tuk  <- 10^uk.df$var1.pred
+uk.df$TukCol  <- as.factor(round(uk.df$Tuk ))
+head(uk.df)
+summary(uk.df)
+#ge.df2csv(uk.df)
+#### 3D
+if(require(scatterplot3d)){
+        scatterplot3d(uk.df[,c(1,2,3)])
+}
+
+
+getwd()
+library(rgl)
+
+
+
+
+
 str(Tlog_uk)
 vgmSphTlog <- fit.variogram(vgmTlog, vgm(0.08, "Sph", 2500, 0))
 vgmSphTlog
