@@ -30,9 +30,12 @@ coordinates(grid) <- ~x+y+z
 proj4string(grid)  <- CRS(lccWgs84)
 gridded(grid) <- TRUE
 head(grid)
-
+uk_r  <- raster(Tlog_uk)
 ### log plot
 
+uk.df  <- as.data.frame(Tlog_uk)
+head(uk.df)
+library(rgl)
 
 vgmTlog <- variogram(Tlog ~ 1, spdf, cutoff = 2500)
 ## Universal Kriging
@@ -51,10 +54,10 @@ vgmGauTlog
 plot(vgmTlog, vgmGauTlog)
 attr(vgmGauTlog, "SSErr")
 grid$TlogUK <- krige(Tlog~z, spdf, grid, model = vgmGauTlog)
-
-
-
-
+grid$TlogUK  <- Tlog_uk$var1.pred
+head(grid@data)
+str(Tlog_uk)
+j  <- join(grid, Tlog_uk)
 vgmSphTlog <- fit.variogram(vgmTlog, vgm(0.08, "Sph", 2500, 0))
 vgmSphTlog
 plot(vgmTlog, vgmSphTlog)
