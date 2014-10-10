@@ -60,10 +60,21 @@ IDW2 <- idw(t ~ 1,spdf,grid, idp = 2)
 IDWz <- idw(t ~ x+y+z,spdf,grid, idp = 2)
 summary(IDWz)
 IDWz2 <- idw(t ~ x^2+y^2+z^3,spdf,grid, idp = 2)
+class(IDW2)
+sgdf  <- as(IDW2, "SpatialGridDataFrame")
+plot3D(raster(spdf))
+r  <- stack(sgdf)
+r  <- brick(sgdf)
+r  <- raster(sgdf)
 
+plot(r)
+class(r)
+str(r)
+plot3D(r)
 library(lattice)
 IDW1.df  <- as.data.frame(IDW1)
 IDW2.df  <- as.data.frame(IDW2)
+
 IDWz.df  <- as.data.frame(IDWz)
 IDWz2.df  <- as.data.frame(IDWz2)
 cols = oceColorsJet(25)
@@ -89,4 +100,6 @@ gg1  <- gg0 + scale_color_gradientn(colours = cols, breaks = brks, name = expres
 library(rgl)
 IDW2.df[,1:3]
 plot3d(IDW2.df[,1:3])
+persp3d(IDW2.df[,1:3])
+wireframe(z ~ x * y, data=IDW2.df)
 surface3d
