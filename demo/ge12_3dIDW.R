@@ -66,10 +66,27 @@ IDW1.df  <- as.data.frame(IDW1)
 IDW2.df  <- as.data.frame(IDW2)
 IDWz.df  <- as.data.frame(IDWz)
 IDWz2.df  <- as.data.frame(IDWz2)
-cols = oceColorsJet(255)
-cols = bpy.colors(255)
+cols = oceColorsJet(25)
+#cols = bpy.colors(255)
+brks = seq(10,250,10)
+labs = seq(10,250,20)
 levelplot(var1.pred ~ x+y | z, IDW1.df, col.regions = cols)
 levelplot(var1.pred ~ x+y | z, IDW2.df, col.regions = cols)
 levelplot(var1.pred ~ x+y | z, IDWz.df,col.regions = cols)
 levelplot(var1.pred ~ x+y | z, IDWz2.df,col.regions = cols)
 
+class(IDW2.df)
+gg0  <- ggplot(IDW2.df ,aes(x, y, col = var1.pred))+
+        geom_point() +
+        scale_x_continuous(label = function(x) x/1000) +
+        scale_y_continuous(label = function(x) x/1000) +
+        xlab("x (km)") + ylab("y (km)") +
+        coord_equal() + theme_bw() +
+        facet_wrap( ~ z, ncol = 5)
+gg1  <- gg0 + scale_color_gradientn(colours = cols, breaks = brks, name = expression(Temperature~(degree*C)))
+
+###
+library(rgl)
+IDW2.df[,1:3]
+plot3d(IDW2.df[,1:3])
+surface3d
