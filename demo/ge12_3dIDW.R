@@ -44,6 +44,10 @@ summary(df)
 spdf  <- df
 coordinates(spdf) <- ~x+y+z
 proj4string(spdf)  <- CRS(lccWgs84)
+zerodist(spdf)
+spdf0 <- remove.duplicates(spdf)
+spdf <- spdf0
+zerodist(spdf)
 ### grid
 grid  <- hkd3dgrid
 coordinates(grid) <- ~x+y+z
