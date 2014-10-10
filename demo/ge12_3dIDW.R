@@ -51,5 +51,5 @@ proj4string(grid)  <- CRS(lccWgs84)
 gridded(grid) <- TRUE
 head(grid)
 ## 3D IDW
-grid$TIDW1 <- idw(t ~ 1,spdf,grid, idp = 1)$var1.pred
-grid$TIDW2 <- idw(t ~ 1,spdf,grid, idp = 2)$var1.pred
+IDW1 <- idw(t ~ 1,spdf,grid, idp = 1)
+IDW2 <- idw(t ~ 1,spdf,grid, idp = 2)
