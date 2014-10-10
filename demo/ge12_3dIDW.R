@@ -57,3 +57,8 @@ head(grid)
 ## 3D IDW
 IDW1 <- idw(t ~ 1,spdf,grid, idp = 1)
 IDW2 <- idw(t ~ 1,spdf,grid, idp = 2)
+IDWz <- idw(t ~ z,spdf,grid, idp = 2)
+library(lattice)
+levelplot(var1.pred ~ x+y | z, IDW1)
+levelplot(var1.pred ~ x+y | z, IDW2)
+levelplot(var1.pred ~ x+y | z, IDWz)
