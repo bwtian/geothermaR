@@ -51,6 +51,11 @@ vgmGauTlog
 plot(vgmTlog, vgmGauTlog)
 attr(vgmGauTlog, "SSErr")
 grid$TlogUK <- krige(Tlog~z, spdf, grid, model = vgmGauTlog)
+
+
+### post-krige
+log(exp(3))
+exp(1)
 uk.df  <- as.data.frame(Tlog_uk)
 uk.df$Tuk  <- 10^uk.df$var1.pred
 uk.df$TukCol  <- as.factor(round(uk.df$Tuk ))
