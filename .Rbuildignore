@@ -1,3 +1,11 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^note$
+note
+data
+demo
+.git
+.gitigonre
+.sparkleshare
+LICENSE
+README.md
+
