@@ -23,5 +23,5 @@ ge.slice100m  <- function(df,v,int=100) {
 ### for voxler soft export
         #data.d$from <- data.d$slice - 50
         #data.d$to <- data.d$slice + 50
-        return(data.d)
+        #return(data.d)
 }
