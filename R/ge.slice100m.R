@@ -21,7 +21,7 @@ ge.slice100m  <- function(df,v,int=100) {
                 data.d  <- rbind.fill(data.l)
         }
 ### for voxler soft export
-        data.d$from <- data.d$slice - 50
-        data.d$to <- data.d$slice + 50
+        #data.d$from <- data.d$slice - 50
+        #data.d$to <- data.d$slice + 50
         return(data.d)
 }
