@@ -1,6 +1,6 @@
 ge.slice100m  <- function(df,x,na.omit = FALSE) {
         ## creat slice factors
-        intervals  <- as.numeric()
+        intervals  <- factor()
         ## TODO power     <- log(10,int)
         for (i in 1:length(v)) {
                 if(round(v[i],-2) == round(v[i],-1)) {
