@@ -1,4 +1,4 @@
-ge.slice100m  <- function(df,v,int=100) {
+ge.slice100m  <- function(df,x,na.omit = TRUE) {
         ## creat slice factors
         intervals  <- as.numeric()
         ## TODO power     <- log(10,int)
@@ -11,8 +11,13 @@ ge.slice100m  <- function(df,v,int=100) {
                 }
         }
         df$slice  <- intervals
-        #data  <- na.omit(df)
+        if(na.omit){
+                data  <- na.omit(df)
+
+        }
+
         ## Delete very rared duplicated case in one slice
+
 #         undup  <- function(df){
 #                 df[!duplicated(df[,1]),] # Careful for ID
 #         }
