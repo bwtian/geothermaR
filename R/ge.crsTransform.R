@@ -4,7 +4,7 @@ ge.crsTransform  <- function(df, x, y, xName, yName, fromCRS, toCRS) {
        df$y  <- df[,which(colnames(df) == as.character(substitute(y)))]
       library(sp)
       library(rgdal)
-      coordinates(df)  <- ~x+y
+      coordinates(df)  <- c("x", "y")
       proj4string(df)  <- CRS(fromCRS)
       df <- spTransform(df,CRS(toCRS))
       df <- as.data.frame(df)
@@ -12,4 +12,3 @@ ge.crsTransform  <- function(df, x, y, xName, yName, fromCRS, toCRS) {
       names(df)[which(names(df) == "y")] <- as.character(substitute(yName))
       return(df)
     }
-
