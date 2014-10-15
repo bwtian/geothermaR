@@ -1,11 +1,11 @@
-ge.slice100m  <- function(df, v, na.omit = FALSE) {
+ge.slice100m  <- function(df, toslice, na.omit = FALSE) {
         ## creat slice factors
         intervals  <- as.numeric()
         ## TODO power     <- log(10,int)
-        for (i in 1:length(v)) {
-                if(round(v[i],-2) == round(v[i],-1)) {
-                        ##intervals[i]  <- round(v[i],-2)%/%int
-                        intervals[i]  <- round(v[i],-2)
+        for (i in 1:length(toslice)) {
+                if(round(toslice[i],-2) == round(toslice[i],-1)) {
+                        ##intervals[i]  <- round(toslice[i],-2)%/%int
+                        intervals[i]  <- round(toslice[i],-2)
                 } else {
                         intervals[i] <- NA
                 }
