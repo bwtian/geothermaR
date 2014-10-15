@@ -12,3 +12,4 @@ ge.crsTransform  <- function(df, x, y, xName, yName, fromCRS, toCRS) {
       names(df)[which(names(df) == "y")] <- as.character(substitute(yName))
       return(df)
     }
+
