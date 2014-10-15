@@ -1,4 +1,4 @@
-ge.slice100m  <- function(df,x,na.omit = FALSE) {
+ge.slice100m  <- function(df, v,na.omit = FALSE) {
         ## creat slice factors
         intervals  <- factor()
         ## TODO power     <- log(10,int)
