@@ -13,9 +13,7 @@ ge.slice100m  <- function(df,x,na.omit = FALSE) {
         df$slice  <- intervals
         if(na.omit){
                 data  <- na.omit(df)
-
         }
-
         ## Delete very rared duplicated case in one slice
 
 #         undup  <- function(df){
