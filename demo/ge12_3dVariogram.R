@@ -76,6 +76,7 @@ library(rgl)
 
 
 str(Tlog_uk)
+
 vgmSphTlog <- fit.variogram(vgmTlog, vgm(0.08, "Sph", 2500, 0))
 vgmSphTlog
 plot(vgmTlog, vgmSphTlog)
