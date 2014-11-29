@@ -14,7 +14,7 @@ fileName  <- deparse(substitute(gg))
 pngName  <- paste0(fileName, now, ".png")
 tifName  <- paste0(fileName, now, ".tiff")
 pdfName  <- paste0(fileName, now, ".pdf")
+ggsave(pdfName, plot = gg, scale = scale, dpi = dpi)
 ggsave(pngName, plot = gg, scale = scale, dpi = dpi)
 ggsave(tifName, plot = gg, scale = scale, dpi = dpi)
-ggsave(pdfName, plot = gg, scale = scale, dpi = dpi)
 }
