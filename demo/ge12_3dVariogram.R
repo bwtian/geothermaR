@@ -5,7 +5,8 @@ hkd3dgrid  <- readRDS("~/Dropbox/2data/hkd/hkf1k3d1h-1k_df.Rds")
 
 ## simple
 
-hkdbh  <- hkdbhs[hkdbhs$Depths >=100 & hkdbhs$Depths <=1000,]
+hkdbh  <- hkdbhs[hkdbhs$Depths >=100 & hkdbhs$Depths <=1500,]
+### Normality check
 hist(log(hkdbh$Temperature))
 x  <- hkdbh$x_lccwgs84
 y  <- hkdbh$y_lccwgs84
@@ -13,6 +14,9 @@ z  <- hkdbh$Depths
 t  <- hkdbh$Temperature
 Tlog  <- log10(hkdbh$Temperature)
 xyzv  <- as.data.frame(cbind(x,y,z,t,Tlog))
+### Trend
+plot(xyzv)
+pairs(xyzv)
 class(xyzv)
 df  <- na.omit(xyzv)
 
