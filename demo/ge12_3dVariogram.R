@@ -19,7 +19,7 @@ plot(xyzv)
 pairs(xyzv)
 class(xyzv)
 df  <- na.omit(xyzv)
-
+### remove duplicated spatial point
 summary(df)
 spdf  <- df
 coordinates(spdf) <- ~x+y+z
