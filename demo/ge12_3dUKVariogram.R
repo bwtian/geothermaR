@@ -10,11 +10,26 @@ plot(vgmTlog)
 v.eye1  <- vgm(psill = 0.16,  model = "Gau",  range=700,  nugget=0)
 v.eye   <- vgm(psill = 0.13,  model = "Sph",  range=35000,  nugget=0,  add.to=v.eye1)
 v.eye
+
 summary(v.eye)
-plot(vgmTlog, v.eye, color = "blue", 
-     xlab = 'Distance [m]', 
-     ylab = expression("Semivariance [(ln"~degree*C~")"^2~"]"),
+plot.new()
+plot(vgmTlog, v.eye, col = "red", lwd = 3, cex.lab=1.2, 
+     xlab = 'Distance [m]', xlim = c(0,40000),
+     ylab = expression("Semivariance [~(ln"~degree*C~")"^2~"]"), ylim = c(0, 0.3)
      )
+pGau  <- v.eye$psill[2]
+pSph  <- v.eye$psill[4]
+arrows(0,0,0,pGau,length=0.16,code=3,col=gray(0.6)) 
+text(2,,pGau/2,paste("Nugget variance =",round(pGau,2)),cex=0.9,pos=4) 
+
+abline(h=n,col=gray(0.6),lty=2) 
+
+arrows(300,n,300,n+s,length=0.08,code=3,col=gray(0.6)) 
+text(298,n+s/2,paste("Sill =",round(s,2)),cex=0.9,pos=2) 
+
+arrows(0,1.3,r,1.3,length=0.08,code=3,col=gray(0.6)) 
+text(r/2,1.3,paste("Range =",round(r,0)),cex=0.9,pos=3) 
+dev.off() 
 
 vgm  <- v.eye
 ge.ggVariogram <- function(vgm){
