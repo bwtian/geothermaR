@@ -77,7 +77,7 @@ vgmGauTlog
 plot(vgmTlog, vgmGauTlog)
 plot(vgmTlog, v.eye)
 attr(vgmGauTlog, "SSErr")
-grid$TlogUK <- krige(Tlog~z, spdf, grid, model = vgmGauTlog)
+grid$TlogUK.eye <- krige(Tlog~z, spdf, grid, model = v.eye)
 show.vgms
 
 ### post-krige
