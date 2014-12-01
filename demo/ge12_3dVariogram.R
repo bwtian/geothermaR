@@ -1,7 +1,7 @@
 source("~/SparkleShare/Rprofile/R/Rsettings/phdRsettings.R")
 # load data and grid
 hkdbhs  <- readRDS("~/Dropbox//2data//dataProduct//hkd//hkd_profiles_140806_164333.Rds")
-hkd3dgrid  <- readRDS("~/Dropbox/2data/hkd/hkd1k3d15h.df.Rds")
+hkd3dgrid  <- readRDS("~/Dropbox/2data//dataProduct/hkd/hkd15hgrid_141201_111200.Rds")
 
 ## simple
 
@@ -39,7 +39,7 @@ gridded(grid) <- TRUE
 grid.sp  <- as(grid, "SpatialPoints")
 grid.df  <- data.frame(as.factor(1:length(grid.sp)))
 grid.spdf <- sp::SpatialPointsDataFrame(grid.sp, grid.df)
-hkd15hgrid  <-grid.spdf 
+hkd15hgrid  <-grid.spdf
 ge.sp2shpPrj(hkd15hgrid)
 ge.sp2shpPrj(hkdbh)
 getwd()
@@ -58,7 +58,7 @@ plot(Tlog.trend.lm)
 head(grid)
 ### log plot
 vgmTlog <- variogram(Tlog ~ 1, spdf, cutoff = 100000)
-vgmTlog 
+vgmTlog
 vgmTlog <- variogram(Tlog ~ 1, spdf,
                      boundaries = c(seq(100,1000,100), seq(2000,10000,1000)))
 vgmTlog <- variogram(Tlog ~ z, spdf,
