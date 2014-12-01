@@ -19,6 +19,7 @@ plot(vgmTlog, v.eye, col = "red", lwd = 3, cex.lab=1.2,
      )
 pGau  <- v.eye$psill[2]
 pSph  <- v.eye$psill[4]
+abline (h = 0.16)
 arrows(10000,0,10000,pGau,code=3,col="green") 
 text(2,,pGau/2,paste("Nugget variance =",round(pGau,2)),cex=0.9,pos=4) 
 
