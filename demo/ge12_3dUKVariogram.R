@@ -23,7 +23,7 @@ abline (h = 0.16)
 arrows(10000,0,10000,pGau,code=3,col="green") 
 text(2,,pGau/2,paste("Nugget variance =",round(pGau,2)),cex=0.9,pos=4) 
 
-abline(h=n,col=gray(0.6),lty=2) 
+abline(h=pGau,col=gray(0.6),lty=2) 
 
 arrows(300,n,300,n+s,length=0.08,code=3,col=gray(0.6)) 
 text(298,n+s/2,paste("Sill =",round(s,2)),cex=0.9,pos=2) 
