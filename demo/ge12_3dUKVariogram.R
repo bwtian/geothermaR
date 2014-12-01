@@ -22,8 +22,8 @@ vplot  <- ggplot() +
     geom_line(data = fitLine.df, aes(x = dist, y = gamma), size = 1, color = "red") +
     geom_point(data = vgmTlog, aes(x = dist, y = gamma), color = "blue") 
     #geom_text(aes(label=np))
-vhline  <- vplot + geom_hline(yintercept = c(0.155, 0.28), linetype = 2, color = "green") 
-        geom_vline(xintercept = c(700, 35000), linetype = 3) 
+vhline  <- vplot + geom_hline(yintercept = c(0.155, 0.28), linetype = 2, color = "green") +
+        geom_vline(xintercept = c(700, 35000), linetype = 3,color = "pink") 
 limitsX  <- c(0,45000)
 breaksX  <- seq(limitsX[1], limitsX[2], 5000)
 labelsX=c(breaksX/1000)
@@ -54,7 +54,10 @@ vtext  <-
             family = "Times") + 
   geom_text(aes(x = 30000, y = 0.02), label = "Range = 700 m", family = "Times") +
   geom_text(aes(x = 30000, y = 0.17), label = "Range = 35 km", family = "Times")
-sd  <- sd(vgmTlog$gamma)
-vtext + geom_ribbon(data = vgmTlog, aes(x = dist, ymin=gamma -2*sd, ymax=gamma+2*sd),alpha=1) 
-
+# sd  <- sd(vgmTlog$gamma)
+# vtext + geom_ribbon(data = vgmTlog, aes(x = dist, ymin=gamma -2*sd, ymax=gamma+2*sd),alpha=1) 
+hkdVariogram  <- vtext
+ge.ggsave(hkdVariogram)
+getwd()
 ## grid$TlogUK.eye <- krige(Tlog~z, spdf, grid, model = v.eye)
+
