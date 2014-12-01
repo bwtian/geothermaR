@@ -32,7 +32,7 @@ arrows(0,1.3,r,1.3,length=0.08,code=3,col=gray(0.6))
 text(r/2,1.3,paste("Range =",round(r,0)),cex=0.9,pos=3) 
 dev.off() 
 
-vgm  <- vgm
+vgm  <- vgmTlog
 ge.ggVariogram <- function(vgm){
         ggplot(vgm, aes(x=dist, y=gamma)) + 
           geom_point(color='blue')
