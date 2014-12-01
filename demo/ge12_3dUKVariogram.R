@@ -45,4 +45,4 @@ ge.ggVariogram <- function(vgm){
 }
 ge.ggVariogram(v.eye)
 
-grid$TlogUK.eye <- krige(Tlog~z, spdf, grid, model = v.eye)
+## grid$TlogUK.eye <- krige(Tlog~z, spdf, grid, model = v.eye)
