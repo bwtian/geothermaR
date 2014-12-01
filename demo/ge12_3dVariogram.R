@@ -36,6 +36,13 @@ coordinates(grid) <- ~x+y+z
 proj4string(grid)  <- CRS(lccWgs84)
 gridded(grid) <- TRUE
 
+grid.sp  <- as(grid, "SpatialPoints")
+grid.df  <- data.frame(as.factor(1:length(grid.sp)))
+grid.spdf <- sp::SpatialPointsDataFrame(grid.sp, grid.df)
+hkd15hgrid  <-grid.spdf 
+ge.sp2shpPrj(hkd15hgrid)
+ge.sp2shpPrj(hkdbh)
+getwd()
 Tlog.trend  <-  krige(Tlog ~ x + y + z , spdf, grid)
 Tlog.trend.df  <- as.data.frame(Tlog.trend)
 levelplot(data = Tlog.trend.df, exp(var1.pred) ~ x*y| z,  contour=TRUE)
