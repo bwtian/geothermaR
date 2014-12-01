@@ -22,7 +22,7 @@ vplot  <- ggplot() +
     geom_line(data = fitLine.df, aes(x = dist, y = gamma), size = 1, color = "red") +
     geom_point(data = vgmTlog, aes(x = dist, y = gamma), color = "blue") 
     #geom_text(aes(label=np))
-vhline  <- vplot + geom_hline(yintercept = c(0,0.155, 0.28), linetype = 2, color = "green") 
+vhline  <- vplot + geom_hline(yintercept = c(0.155, 0.28), linetype = 2, color = "green") 
         geom_vline(xintercept = c(700, 35000), linetype = 3) 
 limitsX  <- c(0,45000)
 breaksX  <- seq(limitsX[1], limitsX[2], 5000)
@@ -48,11 +48,11 @@ vtext  <-
             family = "Times") +
   geom_text(aes(x = 36000, y = 0.21), label = "sill = 0.125", angle = 90, 
             family = "Times") +
-  geom_text(aes(x = 45000, y = 0.08), label = "Gaussian model", angle = 90, 
+  geom_text(aes(x = 44000, y = 0.08), label = "Gaussian model", angle = 90, 
             family = "Times") +
-  geom_text(aes(x = 45000, y = 0.21), label = "Spherical model", angle = 90, 
+  geom_text(aes(x = 44000, y = 0.21), label = "Spherical model", angle = 90, 
             family = "Times") +
-  geom_text(aes(x = 41500, y = 0.29), label = "Nested model", family = "Times")
+  geom_text(aes(x = 20000, y = 0.29), label = "Nested model", family = "Times")
 
   geom_text(aes(x = 36000, y = 0.08), label = "sill = 0.155",  
           family = "Times") +
