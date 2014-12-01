@@ -48,40 +48,13 @@ vtext  <-
             family = "Times") +
   geom_text(aes(x = 36000, y = 0.21), label = "sill = 0.125", angle = 90, 
             family = "Times") +
-  geom_text(aes(x = 44000, y = 0.08), label = "Gaussian model", angle = 90, 
+  geom_text(aes(x = 44000, y = 0.08), label = "Gaussian model \n (Vertical)", angle = 90, 
             family = "Times") +
-  geom_text(aes(x = 44000, y = 0.21), label = "Spherical model", angle = 90, 
-            family = "Times") +
-  geom_text(aes(x = 20000, y = 0.29), label = "Nested model", family = "Times")
-
-  geom_text(aes(x = 36000, y = 0.08), label = "sill = 0.155",  
-          family = "Times") +
-  geom_text(aes(x = 36000, y = 0.21), label = "sill = 0.125",  
-            family = "Times")
-
-arrows(10000,0,10000,pGau,code=3,col="green") 
-text(2,,pGau/2,paste("Nugget variance =",round(pGau,2)),cex=0.9,pos=4) 
-
-abline(h=pGau,col=gray(0.6),lty=2) 
-
-arrows(300,n,300,n+s,length=0.08,code=3,col=gray(0.6)) 
-text(298,n+s/2,paste("Sill =",round(s,2)),cex=0.9,pos=2) 
-
-arrows(0,1.3,r,1.3,length=0.08,code=3,col=gray(0.6)) 
-text(r/2,1.3,paste("Range =",round(r,0)),cex=0.9,pos=3) 
-dev.off() 
-
-vgm  <- vgmTlog
-ge.ggVariogram <- function(vgm){
-        ggplot(vgm, aes(x=dist, y=gamma)) + 
-          geom_point(color='blue')
-        + 
-          geom_text(aes(label=np)) +
-        geom_smooth(fill='white', alpha=0) + 
-        geom_ribbon(aes(ymin=gamma -2*sd,ymax=gamma+2*sd),alpha=0.2) +
-        xlab('Distance') + ylab('Semivariogram') + 
-        theme_bw()
-}
-ge.ggVariogram(v.eye)
+  geom_text(aes(x = 44000, y = 0.21), label = "Spherical model \n (Horizontal)", angle = 90, 
+            family = "Times") + 
+  geom_text(aes(x = 30000, y = 0.02), label = "Range = 700 m", family = "Times") +
+  geom_text(aes(x = 30000, y = 0.17), label = "Range = 35 km", family = "Times")
+sd  <- sd(vgmTlog$gamma)
+vtext + geom_ribbon(data = vgmTlog, aes(x = dist, ymin=gamma -2*sd, ymax=gamma+2*sd),alpha=1) 
 
 ## grid$TlogUK.eye <- krige(Tlog~z, spdf, grid, model = v.eye)
