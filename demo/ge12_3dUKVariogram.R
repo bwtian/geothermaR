@@ -12,6 +12,7 @@ v.eye   <- vgm(psill = 0.13,  model = "Sph",  range=35000,  nugget=0,  add.to=v.
 v.eye
 
 summary(v.eye)
+plot.
 plot(vgmTlog, v.eye, col = "red", lwd = 3, cex.lab=1.2, 
      xlab = 'Distance [m]', xlim = c(0,40000),
      ylab = expression("Semivariance [ (ln"~degree*C~")"^2~"]"), ylim = c(0, 0.3)
