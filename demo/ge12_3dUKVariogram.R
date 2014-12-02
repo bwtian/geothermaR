@@ -63,4 +63,10 @@ ggsave(plot =hkdVariogram, "hkdVariogram.pdf", width = 7, height = 5)
 #ge.ggsave(hkdVariogram)
 getwd()
 ## grid$TlogUK.eye <- krige(Tlog~z, spdf, grid, model = v.eye)
-
+TlogUK <- krige(Tlog~z, spdf, grid, model = v.eye, nmin =6, nmax = 12, maxdist = 50000)
+TlogUK
+grid.df  <- as.data.frame(TlogUK)
+grid.df$Tpred0  <- exp(grid.df$var1.pred)
+grid.df$Tpred1  <- exp(grid.df$var1.pred + 0.5*grid.df$var1.var)
+spplot(TlogUK~Z)
+summary(grid.df)
