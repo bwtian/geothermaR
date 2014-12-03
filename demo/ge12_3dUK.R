@@ -12,6 +12,7 @@ summary(exp(spdf$logt))
 ok.vgm <- variogram(logt ~ 1, spdf,
                      boundaries = c(seq(100,1000,100), seq(2000,45000,5000)))
 plot(ok.vgm)
+###
 uk.vgm <- variogram(logt ~ z, spdf,
                      boundaries = c(seq(100,1000,100), seq(2000,45000,5000)))
 plot(uk.vgm)
@@ -22,7 +23,8 @@ uk.eye   <- vgm(psill = 0.125,  model = "Sph",  range=35000,  nugget=0,  add.to=
 uk.eye
 plot(uk.vgm, model = uk.eye, plot.numbers = TRUE)
 g.trend  <- gstat(formula = logt ~ z, data = spdf, model = uk.eye)
-predict(g.trend, newdata = grid)
+predict(g.trend, newdata = grid, debug.levle = -1) # using universal kriging
+predict(g.trend, newdata = grid, BLUE = TRUE, debug.levle = -1)
 ### UK
 logt.uk <- krige(logt ~ z,  data = spdf, grid, model = uk.eye, omax = 100, maxdist = 100000)
 ### UK plot
