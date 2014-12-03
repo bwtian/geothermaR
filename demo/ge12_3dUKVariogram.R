@@ -17,7 +17,6 @@ summary(v.eye)
 #      xlab = 'Distance [m]', xlim = c(0,40000),
 #      ylab = expression("Semivariance [ (ln"~degree*C~")"^2~"]"), ylim = c(0, 0.3)
 #      )
-
 vplot  <- ggplot() +
     geom_line(data = fitLine.df, aes(x = dist, y = gamma), size = 1, color = "red") +
     geom_point(data = vgmTlog, aes(x = dist, y = gamma), color = "blue")
@@ -63,10 +62,15 @@ ggsave(plot =hkdVariogram, "hkdVariogram.pdf", width = 7, height = 5)
 #ge.ggsave(hkdVariogram)
 getwd()
 ## grid$TlogUK.eye <- krige(Tlog~z, spdf, grid, model = v.eye)
-TlogUK <- krige(Tlog~z, spdf, grid, model = v.eye, nmin =6, nmax = 12, maxdist = 50000)
+##TlogUK <- krige(Tlog~z, spdf, grid, model = v.eye, nmin =2, nmax = 6)
+TlogUK <- krige(Tlog~1, spdf, grid, model = v.eye, nmin =6, nmax = 12)
 TlogUK
 grid.df  <- as.data.frame(TlogUK)
 grid.df$Tpred0  <- exp(grid.df$var1.pred)
 grid.df$Tpred1  <- exp(grid.df$var1.pred + 0.5*grid.df$var1.var)
-spplot(TlogUK~Z)
+head(grid.df)
+hist(grid.df$var1.pred)
 summary(grid.df)
+ggplot(grid.df) +
+        geom_raster(aes(x = x, y =y, fill = Tpred1)) +
+        facet_wrap(~z)
