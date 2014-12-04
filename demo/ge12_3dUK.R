@@ -26,7 +26,7 @@ g.trend  <- gstat(formula = logt ~ z, data = spdf, model = uk.eye)
 # uk1  <- predict(g.trend, newdata = grid, debug.levle = -1, nmax = 20) # using universal kriging
 # gls1   <-  predict(g.trend, newdata = grid, BLUE = TRUE, debug.levle = -1) # generalized least squares trend estimation
 ### UK
-logt.uk <- krige(formula = logt ~ z,  data = spdf, grid, model = uk.eye, nmax = 20)
+logt.uk <- krige(log(t)~z,  data = spdf@data, newdata = grid, model = uk.eye, nmax = 20)
 
 ### UK plot
 uk.df  <- as.data.frame(logt.uk)
