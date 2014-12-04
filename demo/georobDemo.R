@@ -33,3 +33,6 @@ r.irf0.aniso <- fit.variogram.model(r.sv.aniso, variogram.model = "RMfbm",
 summary(r.irf0.aniso, correlation = TRUE)
 
 lines(r.irf0.aniso, xy.angle = seq( 0, 135, by = 45))
+
+###
+
