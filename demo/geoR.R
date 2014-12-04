@@ -5,6 +5,7 @@ hkdbhs  <- readRDS("~/Dropbox//2data//dataProduct//hkd/hkdbh_141201_110703.Rds")
 hkd3dgrid  <- readRDS("~/Dropbox/2data//dataProduct/hkd/hkd15hgrid_141201_111200.Rds")
 spdf  <- hkdbhs
 grid  <- hkd3dgrid
+geodata  <- as.geodata(spdf)
 ### research logt
 spdf$logt  <- log(spdf$t)
 summary(spdf$t)
