@@ -1,11 +1,11 @@
 data(wolfcamp, package = "geoR")
-
+summary(wolfcamp)
 ## fitting an isotropic IRF(0) model
 r.sv.iso <- sample.variogram(wolfcamp[["data"]], locations = wolfcamp[[1]],
                              lag.class.def = seq(0, 200, by = 15))
-
+summary(r.sv.iso)
 ## Not run:
-plot( r.sv.iso, type = "l")
+plot(r.sv.iso, type = "l")
 ## End(Not run)
 
 ## fitting an anisotropic IRF(0) model
