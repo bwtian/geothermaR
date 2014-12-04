@@ -23,8 +23,8 @@ uk.eye   <- vgm(psill = 0.125,  model = "Sph",  range=35000,  nugget=0,  add.to=
 uk.eye
 plot(uk.vgm, model = uk.eye, plot.numbers = TRUE)
 g.trend  <- gstat(formula = logt ~ z, data = spdf, model = uk.eye)
-predict(g.trend, newdata = grid, debug.levle = -1) # using universal kriging
-predict(g.trend, newdata = grid, BLUE = TRUE, debug.levle = -1)
+uk1  <- predict(g.trend, newdata = grid, debug.levle = -1, nmax = 20) # using universal kriging
+gls1   <-  predict(g.trend, newdata = grid, BLUE = TRUE, debug.levle = -1) # generalized least squares trend estimation
 ### UK
 logt.uk <- krige(logt ~ z,  data = spdf, grid, model = uk.eye, omax = 100, maxdist = 100000)
 ### UK plot
