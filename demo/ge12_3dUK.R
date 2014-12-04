@@ -25,13 +25,17 @@ plot(uk.vgm, model = uk.eye, plot.numbers = TRUE)
 g.trend  <- gstat(formula = logt ~ z, data = spdf, model = uk.eye)
 # uk1  <- predict(g.trend, newdata = grid, debug.levle = -1, nmax = 20) # using universal kriging
 # gls1   <-  predict(g.trend, newdata = grid, BLUE = TRUE, debug.levle = -1) # generalized least squares trend estimation
-### UK
-logt.uk <- krige(log(t)~z,  data = spdf@data, newdata = grid, model = uk.eye, nmax = 20)
-
+### UK and Cross validataion
+logt.uk <- krige(log(t)~z, spdf, grid, model = uk.eye, nmax = 20)
+summary((spdf$logt))
+summary((logt.uk$var1.pred))
+logt.uk.cv  <- krige.cv(logt ~ z, spdf, grid, model = uk.eye, nfold = 10)
 ### UK plot
+
 uk.df  <- as.data.frame(logt.uk)
-summary(exp(spdf$logt))
-summary(exp(logt.uk$var1.pred))
+summary((spdf$logt))
+summary((logt.uk$var1.pred))
+plot(spdf$logt, logt.uk$var1.pred)
 hist(uk.df$var1.pred)
 hist(as.numeric(spdf@data$tlog))
 uk.df$Tpred0  <- exp(grid.df$var1.pred)
