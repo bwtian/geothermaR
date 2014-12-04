@@ -8,7 +8,6 @@ grid  <- hkd3dgrid
 ###  sample variogram
 sv.iso <- sample.variogram(log(spdf@data$t), locations = spdf@coords,
                              lag.class.def =c(seq(100,1000,100), seq(2000,45000,5000)))
-sv.iso <- sample.variogram(log(spdf@data$t), locations = spdf@coords)
 summary(sv.iso)
 plot(sv.iso)
 plot(sv.iso, type = "l")
