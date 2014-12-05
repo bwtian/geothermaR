@@ -21,7 +21,7 @@ P  <- Polygon(cbind(c(1152500, 1152500, 1673500, 1673500, 1152500),
 #                     c(1372550, 1843550, 1843550, 1372550, 1372550)))
 Ps  <- Polygons(list(P), "P")
 SpP  <- SpatialPolygons(list(Ps))
-grid2d1k  <- spsample(SpP,type = "regular", cellsize = c(1000,1000),
+grid2d1k  <- spsample(SpP,type = "regular", cellsize = c(100,100),
                       offset = c(0.5, 0.5))
 proj4string(grid2d1k) <- CRS(lccWgs84)
 # bbraster1h  <- rasterFromXYZ(bbgrid1h)
@@ -46,8 +46,8 @@ proj4string(hkdLandPoint1k)  <- CRS(lccWgs84)
 # saveRDS(hkdmaskb, file = "~/Dropbox/2data/hkd/hkf1kpoint2d.Rds")
 # head(hkdmaskb)
 # hkdmaskb  <- readRDS("~/SparkleShare/TIR/hkdmskb_grdi2d1h.Rds")
-plot(hkdLandPoint1k)
-plot(hkdLand, add = T)
+# plot(hkdLandPoint1k)
+# plot(hkdLand, add = T)
 hkdPoint2d1k.df  <- as.data.frame(hkdLandPoint1k)
 
 l  <- list()
@@ -62,7 +62,4 @@ dd  <- d
 coordinates(dd) <- ~x+y+z
 proj4string(dd)  <- CRS(lccWgs84)
 gridded(dd) <- TRUE
-summary(dd)
-str(dd)
-dd@coords
 #saveRDS(dd, file = "~/Dropbox/2data/hkd/hkd1k3d15h.df.Rds")
