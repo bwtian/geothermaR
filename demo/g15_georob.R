@@ -2,9 +2,12 @@ library(georob)
 source("~/SparkleShare/Rprofile/R/Rsettings/phdRsettings.R")
 # load data and grid
 hkdbhs  <- readRDS("~/Dropbox//2data//dataProduct//hkd/hkdbh_141201_110703.Rds")
+summary(hkdbhs)
 hkd3dgrid  <- readRDS("~/Dropbox/2data//dataProduct/hkd/hkd15hgrid_141201_111200.Rds")
 spdf  <- hkdbhs
 grid  <- hkd3dgrid
+summary(hkd3dgrid)
+        max(spdf$z)
 ###  sample variogram
 sv.iso <- sample.variogram(log(spdf@data$t), locations = spdf@coords,
                              lag.class.def =c(seq(100,1000,100), seq(2000,45000,5000)))
@@ -13,14 +16,14 @@ plot(sv.iso)
 plot(sv.iso, type = "l")
 
 ### fit
-r.irf0.iso <- fit.variogram.model(r.sv.iso, variogram.model = "RMfbm",
+r.irf0.iso <- fit.variogram.model(sv.iso, variogram.model = "RMfbm",
                                   param = c(variance = 100, nugget = 1000, scale = 1., alpha = 1.),
                                   fit.param = c( variance = TRUE, nugget = TRUE, scale = FALSE, alpha = TRUE),
                                   method = "Nelder-Mead", hessian = FALSE, control = list(maxit = 5000))
 summary(r.irf0.iso, correlation = TRUE)
 plot( r.sv.iso, type = "l")
 lines( r.irf0.iso, line.col = "red")
-
+summary(spdf)
 
 fsv
 r.logt.reml <- georob(log(t) ~ z, data = spdf, locations = grid@coords,
