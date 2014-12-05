@@ -29,24 +29,28 @@ plot(uk.vgm, model = uk.eye, plot.numbers = TRUE)
 ### UK and Cross validataion
 summary(spdf)
 summary(grid)
-logt.uk <- krige(log(t)~z, spdf, grid, model = uk.eye, nmax = 6)
+logt.uk <- krige(log(t)~z, spdf, grid, model = uk.eye, nmax = 50)
 summary((spdf$logt))
 summary((logt.uk$var1.pred))
 logt.uk.cv  <- krige.cv(logt ~ z, spdf, grid, model = uk.eye, nfold = 10)
 summary(logt.uk.cv)
+bubble(logt.uk.cv, "zscore")
 ### Check CrossValidation
 ge.cv <- function(cv, response){
         ### mean error, ideally should be 0
         me0  <- mean(cv$residual)
+        me00  <- mean(cv$residual^2)
+
         rmse0  <- sqrt(mean(cv$residual^2))
-        rmsesd  <- rmse/sd(response)
+        #rmsesd  <- rmse0/sd(response)
         ### corrlation observed and predicted, ideally 1
+        #me1  <- mean(cv$residual^2/cv$var1.var)
         cor1  <- cor(cv$observed, cv$observed - cv$residual)
         ### corrlation predicted data and residual
         cor0  <- cor(cv$observed - cv$residual, cv$residual)
         ### Results
-        results  <- c(me0,rmse0, rmsesd,cor1,cor0)
-        names(results)  <- c("mean error=0","rmse=0","rmsesd=0",
+        results  <- c(me0, me00, rmse0, rmsesd,cor1,cor0)
+        names(results)  <- c("Mean error=0", "Mean suqred error=0", "rmse=0","rmsesd=0",
                              "correlation=1", "correlation=0")
         return(results)
 }
