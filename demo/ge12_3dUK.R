@@ -33,8 +33,12 @@ logt.uk <- krige(log(t)~z, spdf, grid, model = uk.eye, nmax = 50)
 summary((spdf$logt))
 summary((logt.uk$var1.pred))
 bubble(logt.uk, "var1.pred")
-ggplot(logt.uk@data) +
-        geom_raster(aes(x = x, y =y, fill = var1.pred)) +
+logt.uk.df  <- as.data.frame(logt.uk)
+logt.uk.df$tback  <-  exp(logt.uk.df$var1.pred + 0.5*logt.uk.df$var1.var)
+summary(logt.uk.df)
+hist(logt.uk.df$tback)
+ggplot(logt.uk.df]) +
+        geom_raster(aes(x = x, y =y, fill = exp(var1.pred + 0.5*var1.var))) +
         facet_wrap(~z)
 ### Corss validataion
 logt.uk.cv  <- krige.cv(logt ~ z, spdf, grid, model = uk.eye, nfold = 10)
