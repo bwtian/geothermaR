@@ -19,7 +19,7 @@ uk.vgm <- variogram(logt ~ z, spdf,
 plot(uk.vgm)
 
 show.vgms()
-uk.eye1  <- vgm(psill = 0.155,  model = "Gau",  range=700,  nugget=0.1)
+uk.eye1  <- vgm(psill = 0.155,  model = "Gau",  range=700,  nugget=0.0001)
 uk.eye   <- vgm(psill = 0.125,  model = "Sph",  range=35000,  nugget=0,  add.to=uk.eye1)
 uk.eye
 plot(uk.vgm, model = uk.eye, plot.numbers = TRUE)
