@@ -21,14 +21,19 @@ show.vgms()
 uk.eye1  <- vgm(psill = 0.155,  model = "Gau",  range=700,  nugget=0.01)
 uk.eye   <- vgm(psill = 0.125,  model = "Sph",  range=35000,  nugget=0,  add.to=uk.eye1)
 uk.eye
+
 plot(uk.vgm, model = uk.eye, plot.numbers = TRUE)
+uk.fit  <- fit.variogram(uk.vgm, uk.eye, fit.sills = TRUE, fit.ranges = TRUE,
+              fit.method = 7, debug.level = 1, warn.if.neg = FALSE)
+uk.fit
+plot(uk.vgm, uk.fit)
 #g.trend  <- gstat(formula = logt ~ z, data = spdf, model = uk.eye)
 # uk1  <- predict(g.trend, newdata = grid, debug.levle = -1, nmax = 20) # using universal kriging
 # gls1   <-  predict(g.trend, newdata = grid, BLUE = TRUE, debug.levle = -1) # generalized least squares trend estimation
 ### UK
 summary(spdf)
 summary(grid)
-logt.uk <- krige(log(t)~z, spdf, grid, model = uk.eye, nmax = 50)
+logt.uk <- krige(log(t)~z, spdf, grid, model = uk.eye, nmax = 120)
 summary((spdf$logt))
 summary((logt.uk$var1.pred))
 bubble(logt.uk, "var1.pred")
