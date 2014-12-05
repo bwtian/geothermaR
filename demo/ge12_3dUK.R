@@ -19,7 +19,7 @@ uk.vgm <- variogram(logt ~ z, spdf,
 plot(uk.vgm)
 
 show.vgms()
-uk.eye1  <- vgm(psill = 0.155,  model = "Gau",  range=700,  nugget=0.001)
+uk.eye1  <- vgm(psill = 0.155,  model = "Gau",  range=700,  nugget=0.1)
 uk.eye   <- vgm(psill = 0.125,  model = "Sph",  range=35000,  nugget=0,  add.to=uk.eye1)
 uk.eye
 plot(uk.vgm, model = uk.eye, plot.numbers = TRUE)
@@ -29,7 +29,7 @@ plot(uk.vgm, model = uk.eye, plot.numbers = TRUE)
 ### UK and Cross validataion
 summary(spdf)
 summary(grid)
-logt.uk <- krige(log(t)~z, spdf, grid, model = uk.eye, nmax = 20)
+logt.uk <- krige(log(t)~z, spdf, grid, model = uk.eye, nmax = 6)
 summary((spdf$logt))
 summary((logt.uk$var1.pred))
 logt.uk.cv  <- krige.cv(logt ~ z, spdf, grid, model = uk.eye, nfold = 10)
@@ -37,18 +37,20 @@ summary(logt.uk.cv)
 ### Check CrossValidation
 ge.cv <- function(cv, response){
         ### mean error, ideally should be 0
-        me  <- mean(cv$residual)
-        rmse  <- sqrt(mean(cv$residual^2))
+        me0  <- mean(cv$residual)
+        rmse0  <- sqrt(mean(cv$residual^2))
         rmsesd  <- rmse/sd(response)
         ### corrlation observed and predicted, ideally 1
+        cor1  <- cor(cv$observed, cv$observed - cv$residual)
         ### Results
-        results  <- c(me,rmse, rmsesd)
-        names(results)  <- c("mean error","rmse","rmsesd")
+        results  <- c(me0,rmse0, rmsesd)
+        names(results)  <- c("mean error=0","rmse=0","rmsesd=0",
+                             "correlation=1", "correlation=0")
         return(results)
 }
 
 ge.cv(logt.uk.cv, spdf$tlog)
-sd(spdf$tlog)
+sd(spdf@data$tlog)
 ### UK plot
 
 uk.df  <- as.data.frame(logt.uk)
