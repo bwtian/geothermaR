@@ -18,31 +18,37 @@ uk.vgm <- variogram(logt ~ z, spdf,
                      boundaries = c(seq(100,1000,100), seq(2000,45000,5000)))
 plot(uk.vgm)
 
-
-uk.eye1  <- vgm(psill = 0.155,  model = "Gau",  range=700,  nugget=0)
+show.vgms()
+uk.eye1  <- vgm(psill = 0.155,  model = "Gau",  range=700,  nugget=0.001)
 uk.eye   <- vgm(psill = 0.125,  model = "Sph",  range=35000,  nugget=0,  add.to=uk.eye1)
 uk.eye
 plot(uk.vgm, model = uk.eye, plot.numbers = TRUE)
-g.trend  <- gstat(formula = logt ~ z, data = spdf, model = uk.eye)
+#g.trend  <- gstat(formula = logt ~ z, data = spdf, model = uk.eye)
 # uk1  <- predict(g.trend, newdata = grid, debug.levle = -1, nmax = 20) # using universal kriging
 # gls1   <-  predict(g.trend, newdata = grid, BLUE = TRUE, debug.levle = -1) # generalized least squares trend estimation
 ### UK and Cross validataion
+summary(spdf)
+summary(grid)
 logt.uk <- krige(log(t)~z, spdf, grid, model = uk.eye, nmax = 20)
 summary((spdf$logt))
 summary((logt.uk$var1.pred))
 logt.uk.cv  <- krige.cv(logt ~ z, spdf, grid, model = uk.eye, nfold = 10)
 summary(logt.uk.cv)
 ### Check CrossValidation
-ge.cv <- function(cv){
+ge.cv <- function(cv, response){
         ### mean error, ideally should be 0
         me  <- mean(cv$residual)
         rmse  <- sqrt(mean(cv$residual^2))
-        results  <- c(me,rmse)
-        names(results)  <- c("mean error","rmse")
+        rmsesd  <- rmse/sd(response)
+        ### corrlation observed and predicted, ideally 1
+        ### Results
+        results  <- c(me,rmse, rmsesd)
+        names(results)  <- c("mean error","rmse","rmsesd")
         return(results)
 }
 
-ge.cv(logt.uk.cv)
+ge.cv(logt.uk.cv, spdf$tlog)
+sd(spdf$tlog)
 ### UK plot
 
 uk.df  <- as.data.frame(logt.uk)
