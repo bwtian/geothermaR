@@ -65,4 +65,4 @@ gridded(dd) <- TRUE
 summary(dd)
 str(dd)
 dd@coords
-saveRDS(dd, file = "~/Dropbox/2data/hkd/hkd1k3d15h.df.Rds")
+#saveRDS(dd, file = "~/Dropbox/2data/hkd/hkd1k3d15h.df.Rds")
