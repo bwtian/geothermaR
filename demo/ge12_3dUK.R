@@ -42,8 +42,10 @@ ge.cv <- function(cv, response){
         rmsesd  <- rmse/sd(response)
         ### corrlation observed and predicted, ideally 1
         cor1  <- cor(cv$observed, cv$observed - cv$residual)
+        ### corrlation predicted data and residual
+        cor0  <- cor(cv$observed - cv$residual, cv$residual)
         ### Results
-        results  <- c(me0,rmse0, rmsesd)
+        results  <- c(me0,rmse0, rmsesd,cor1,cor0)
         names(results)  <- c("mean error=0","rmse=0","rmsesd=0",
                              "correlation=1", "correlation=0")
         return(results)
