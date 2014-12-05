@@ -33,7 +33,7 @@ plot(uk.vgm, uk.fit)
 ### UK
 summary(spdf)
 summary(grid)
-logt.uk <- krige(log(t)~z, spdf, grid, model = uk.eye, nmax = 120)
+logt.uk <- krige(log(t)~z, spdf, grid, model = uk.eye, nmax = 20)
 summary((spdf$logt))
 summary((logt.uk$var1.pred))
 bubble(logt.uk, "var1.pred")
