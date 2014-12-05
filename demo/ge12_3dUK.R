@@ -31,6 +31,18 @@ logt.uk <- krige(log(t)~z, spdf, grid, model = uk.eye, nmax = 20)
 summary((spdf$logt))
 summary((logt.uk$var1.pred))
 logt.uk.cv  <- krige.cv(logt ~ z, spdf, grid, model = uk.eye, nfold = 10)
+summary(logt.uk.cv)
+### Check CrossValidation
+ge.cv <- function(cv){
+        ### mean error, ideally should be 0
+        me  <- mean(cv$residual)
+        rmse  <- sqrt(mean(cv$residual^2))
+        results  <- c(me,rmse)
+        names(results)  <- c("mean error","rmse")
+        return(results)
+}
+
+ge.cv(logt.uk.cv)
 ### UK plot
 
 uk.df  <- as.data.frame(logt.uk)
