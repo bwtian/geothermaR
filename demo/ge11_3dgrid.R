@@ -5,7 +5,7 @@ source("~/SparkleShare/Rprofile/R/Rsettings/phdRsettings.R")
 # xyz <- list()
 # for (i in 1:10) {
 #         xyz[[i]] <- cbind(xy,rep(i*100, nrow(xy), simplify=F))
-# 
+#
 # }
 # grid3d <- as.data.frame(do.call(rbind, xyz))
 # colnames(grid3d) <- c("x","y","z")
@@ -53,8 +53,16 @@ hkdPoint2d1k.df  <- as.data.frame(hkdLandPoint1k)
 l  <- list()
 for (i in 1:15) {
         l[[i]] <- cbind(hkdPoint2d1k.df, z = rep(i*100, nrow(hkdPoint2d1k.df), simplify=F))
-        
+
 }
 d  <- do.call(rbind, l)
 names(d)  <- c("x","y","z")
+summary(d)
+dd  <- d
+coordinates(dd) <- ~x+y+z
+proj4string(dd)  <- CRS(lccWgs84)
+gridded(dd) <- TRUE
+summary(dd)
+str(dd)
+dd@coords
 saveRDS(d, file = "~/Dropbox/2data/hkd/hkd1k3d15h.df.Rds")
