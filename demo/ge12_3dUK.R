@@ -19,19 +19,20 @@ uk.vgm <- variogram(logt ~ z, spdf,
 plot(uk.vgm)
 
 show.vgms()
-uk.eye1  <- vgm(psill = 0.155,  model = "Gau",  range=700,  nugget=0.0001)
+uk.eye1  <- vgm(psill = 0.155,  model = "Gau",  range=700,  nugget=0.01)
 uk.eye   <- vgm(psill = 0.125,  model = "Sph",  range=35000,  nugget=0,  add.to=uk.eye1)
 uk.eye
 plot(uk.vgm, model = uk.eye, plot.numbers = TRUE)
 #g.trend  <- gstat(formula = logt ~ z, data = spdf, model = uk.eye)
 # uk1  <- predict(g.trend, newdata = grid, debug.levle = -1, nmax = 20) # using universal kriging
 # gls1   <-  predict(g.trend, newdata = grid, BLUE = TRUE, debug.levle = -1) # generalized least squares trend estimation
-### UK and Cross validataion
+### UK
 summary(spdf)
 summary(grid)
 logt.uk <- krige(log(t)~z, spdf, grid, model = uk.eye, nmax = 50)
 summary((spdf$logt))
 summary((logt.uk$var1.pred))
+### Corss validataion
 logt.uk.cv  <- krige.cv(logt ~ z, spdf, grid, model = uk.eye, nfold = 10)
 summary(logt.uk.cv)
 bubble(logt.uk.cv, "zscore")
