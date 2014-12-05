@@ -32,10 +32,14 @@ summary(grid)
 logt.uk <- krige(log(t)~z, spdf, grid, model = uk.eye, nmax = 50)
 summary((spdf$logt))
 summary((logt.uk$var1.pred))
+bubble(logt.uk, "var1.pred")
+ggplot(logt.uk@data) +
+        geom_raster(aes(x = x, y =y, fill = var1.pred)) +
+        facet_wrap(~z)
 ### Corss validataion
 logt.uk.cv  <- krige.cv(logt ~ z, spdf, grid, model = uk.eye, nfold = 10)
 summary(logt.uk.cv)
-bubble(logt.uk.cv, "zscore")
+spplot(logt.uk.cv~, "zscore")
 ### Check CrossValidation
 ge.cv <- function(cv, response){
         ### mean error, ideally should be 0
