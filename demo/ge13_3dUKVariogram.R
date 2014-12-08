@@ -55,22 +55,22 @@ vtext  <-
   geom_text(aes(x = 30000, y = 0.17), label = "Range = 35 km", family = "Times")
 # sd  <- sd(vgmTlog$gamma)
 # vtext + geom_ribbon(data = vgmTlog, aes(x = dist, ymin=gamma -2*sd, ymax=gamma+2*sd),alpha=1)
-hkdVariogram  <- vtext +
-        theme_bw(base_size = 12, base_family = "Times") +
-        theme(axis.title.x=element_text(vjust = -0.5))
-ggsave(plot =hkdVariogram, "hkdVariogram.pdf", width = 7, height = 5)
-#ge.ggsave(hkdVariogram)
-getwd()
-## grid$TlogUK.eye <- krige(Tlog~z, spdf, grid, model = v.eye)
-##TlogUK <- krige(Tlog~z, spdf, grid, model = v.eye, nmin =2, nmax = 6)
-TlogUK <- krige(Tlog~1, spdf, grid, model = v.eye, nmin =6, nmax = 12)
-TlogUK
-grid.df  <- as.data.frame(TlogUK)
-grid.df$Tpred0  <- exp(grid.df$var1.pred)
-grid.df$Tpred1  <- exp(grid.df$var1.pred + 0.5*grid.df$var1.var)
-head(grid.df)
-hist(grid.df$var1.pred)
-summary(grid.df)
-ggplot(grid.df) +
-        geom_raster(aes(x = x, y =y, fill = Tpred1)) +
-        facet_wrap(~z)
+# hkdVariogram  <- vtext +
+#         theme_bw(base_size = 12, base_family = "Times") +
+#         theme(axis.title.x=element_text(vjust = -0.5))
+# ggsave(plot =hkdVariogram, "hkdVariogram.pdf", width = 7, height = 5)
+# #ge.ggsave(hkdVariogram)
+# getwd()
+# ## grid$TlogUK.eye <- krige(Tlog~z, spdf, grid, model = v.eye)
+# ##TlogUK <- krige(Tlog~z, spdf, grid, model = v.eye, nmin =2, nmax = 6)
+# TlogUK <- krige(Tlog~1, spdf, grid, model = v.eye, nmin =6, nmax = 12)
+# TlogUK
+# grid.df  <- as.data.frame(TlogUK)
+# grid.df$Tpred0  <- exp(grid.df$var1.pred)
+# grid.df$Tpred1  <- exp(grid.df$var1.pred + 0.5*grid.df$var1.var)
+# head(grid.df)
+# hist(grid.df$var1.pred)
+# summary(grid.df)
+# ggplot(grid.df) +
+#         geom_raster(aes(x = x, y =y, fill = Tpred1)) +
+#         facet_wrap(~z)
