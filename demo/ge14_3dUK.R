@@ -14,12 +14,12 @@ ok.vgm <- variogram(logt ~ 1, spdf,
 plot(ok.vgm)
 ###
 uk.vgm <- variogram(logt ~ z, spdf,
-                     boundaries = c(seq(100,1000,100), seq(2000,45000,5000)))
+                     boundaries = c(seq(100,1000,100), seq(2000,40000,5000)))
 plot(uk.vgm)
 
 show.vgms()
-uk.eye1  <- vgm(psill = 0.155,  model = "Gau",  range=700,  nugget=0.01)
-uk.eye   <- vgm(psill = 0.125,  model = "Sph",  range=35000,  nugget=0,  add.to=uk.eye1)
+uk.eye1  <- vgm(psill = 0.125,  model = "Gau",  range=700,  nugget=0.002)
+uk.eye   <- vgm(psill = 0.155,  model = "Sph",  range=30000,  add.to=uk.eye1)
 uk.eye
 
 plot(uk.vgm, model = uk.eye, plot.numbers = TRUE)
@@ -33,7 +33,7 @@ plot(uk.vgm, uk.fit)
 ### UK
 summary(spdf)
 summary(grid)
-logt.uk <- krige(log(t)~z, spdf, grid, model = uk.eye, nmax = 20)
+logt.uk <- krige(log(t)~z, spdf, grid, model = uk.fit, nmax = 20)
 summary((spdf$logt))
 summary((logt.uk$var1.pred))
 bubble(logt.uk, "var1.pred")
