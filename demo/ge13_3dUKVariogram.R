@@ -43,15 +43,15 @@ ylab(expression("Semivariance [ (ln"~degree*C~")"^2~"]")) +
 
 vtext  <-
   vbase +
-  geom_text(aes(x = 30000, y = 0.28), label = "sill = 0.155", angle = 0,
+  geom_text(aes(x = 30000, y = 0.30), label = "sill = 0.155", angle = 0,
             family = "Times") +
-  geom_text(aes(x = 30000, y = 0.24), label = "sill = 0.125", angle = 0,
+  geom_text(aes(x = 6000, y = 0.14), label = "sill = 0.125", angle = 0,
             family = "Times") +
   geom_text(aes(x = 44000, y = 0.08), label = "Gaussian model \n (Vertical)", angle = 90,
             family = "Times") +
   geom_text(aes(x = 44000, y = 0.21), label = "Spherical model \n (Horizontal)", angle = 90,
             family = "Times") +
-  geom_text(aes(x = 5000, y = 0.02), label = "Range = 700 m", family = "Times") +
+  geom_text(aes(x = 6000, y = 0.02), label = "Range = 700 m", family = "Times") +
   geom_text(aes(x = 30000, y = 0.17), label = "Range = 35 km", family = "Times")
 # sd  <- sd(vgmTlog$gamma)
 # vtext + geom_ribbon(data = vgmTlog, aes(x = dist, ymin=gamma -2*sd, ymax=gamma+2*sd),alpha=1)
