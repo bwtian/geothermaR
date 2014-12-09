@@ -59,9 +59,9 @@ hkdVariogram  <- vtext +
         theme_bw(base_size = 12, base_family = "Times") +
         theme(axis.title.x=element_text(vjust = -0.5))
 hkdVariogram
-#ggsave(plot =hkdVariogram, "hkdVariogram.pdf", width = 7, height = 5)
+ggsave(plot =hkdVariogram, "hkdVariogram.pdf", width = 7, height = 5)
 # #ge.ggsave(hkdVariogram)
-# getwd()
+ getwd()
 # ## grid$TlogUK.eye <- krige(Tlog~z, spdf, grid, model = v.eye)
 # ##TlogUK <- krige(Tlog~z, spdf, grid, model = v.eye, nmin =2, nmax = 6)
 # TlogUK <- krige(Tlog~1, spdf, grid, model = v.eye, nmin =6, nmax = 12)
