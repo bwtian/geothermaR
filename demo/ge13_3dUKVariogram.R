@@ -49,7 +49,7 @@ vtext  <-
             family = "Times") +
   geom_text(aes(x = 44000, y = 0.08), label = "Gaussian model \n (Vertical)", angle = 90,
             family = "Times") +
-  geom_text(aes(x = 44000, y = 0.21), label = "Spherical model \n (Horizontal)", angle = 90,
+  geom_text(aes(x = 44000, y = 0.21), label = "Spherical model \n (Lateral)", angle = 90,
             family = "Times") +
   geom_text(aes(x = 6000, y = 0.02), label = "Range = 700 m", family = "Times") +
   geom_text(aes(x = 30000, y = 0.18), label = "Range = 35 km", family = "Times")
