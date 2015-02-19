@@ -1,7 +1,7 @@
 * R Rules
 ** Release name: Main.Sub.Patch  for example: 0.0.1
 ** Function name: package.(noun)(verb)noun
-In my opinion,it is important to know the package name when you use R, 
+In my opinion,it is important to know the package name when you use R,
 so let us show it more obviously.
 | Package    | Input |  Via | Output  | Output | Functions      |
 | geothermaR | type  | verb | content | type   | name           |
@@ -65,4 +65,5 @@ so let us show it more obviously.
 * R Demos
 [[file:~/SparkleShare/geothermaR/demo/ge1_2dgrid.R]]
 * R Manuals
+
 [[*R%20Demos][R Demos]]
