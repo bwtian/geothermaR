@@ -1,5 +1,25 @@
 ** TODO Japan 3D variogram
 - State "TODO"       from ""           [2015-02-19 Thu 16:02]
+>>> short long
+>>> 1 Nug Nug (nugget)
+>>> 2 Exp Exp (exponential)
+>>> 3 Sph Sph (spherical)
+>>> 4 Gau Gau (gaussian)
+>>> 5 Exc Exclass (Exponential class)
+>>> 6 Mat Mat (Matern)
+>>> 7 Ste Mat (Matern, M. Stein's parameterization)
+>>> 8 Cir Cir (circular)
+>>> 9 Lin Lin (linear)
+>>> 10 Bes Bes (bessel)
+>>> 11 Pen Pen (pentaspherical)
+>>> 12 Per Per (periodic)
+>>> 13 Hol Hol (hole)
+>>> 14 Log Log (logarithmic)
+>>> 15 Pow Pow (power)
+>>> 16 Spl Spl (spline)
+>>> 17 Leg Leg (Legendre)
+>>> 18 Err Err (Measurement error)
+>>> 19 Int Int (Intercept)
 * R Rules
 ** Release name: Main.Sub.Patch  for example: 0.0.1
 ** Function name: package.(noun)(verb)noun
