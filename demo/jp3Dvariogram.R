@@ -21,14 +21,14 @@ d0  <- as.numeric(bh.df0$Depths)
 bh.df  <- bh.df0[d0 >=100 & d0 <=1500,] #74804
 x  <- as.numeric(bh.df$x)
 y  <- as.numeric(bh.df$y)
-d <- as.numeric(bh.df$Depths)
+z <- as.numeric(bh.df$Depths)
 t  <- as.numeric(bh.df$Temperature)
-tlog  <- as.numeric(log10(t))
+tlog  <- as.numeric(log(t))
 ### Normality check
 
-plot(t,d)
+plot(t,z)
 
-xyzv  <- as.data.frame(cbind(x,y,d,t,tlog))
+xyzv  <- as.data.frame(cbind(x,y,z,t,tlog))
 ###  Trend Surface Analysis
 plot(xyzv)
 # pairs(xyzv)
@@ -42,35 +42,42 @@ proj4string(spdf)  <- CRS(lccWgs84)
 zerodist(spdf)
 spdf0 <- remove.duplicates(spdf)
 spdf <- spdf0
-zerodist(spdf)
+zerodist(spdf) ##check again
+vgmTlog <- variogram(tlog ~ z, spdf,
+                     boundaries = c(seq(100,1000,100), seq(5000,45000,5000)))
+plot(vgmTlog)
+v.eye1  <- vgm(psill = 0.155,  model = "Gau",  range=700,  nugget=0)
+v.eye   <- vgm(psill = 0.125,  model = "Sph",  range=35000,  nugget=0,  add.to=v.eye1)
+v.eye
+plot(vgmTlog, v.eye)
 ### grid
-grid  <- hkd3dgrid
-coordinates(grid) <- ~x+y+z
-proj4string(grid)  <- CRS(lccWgs84)
-gridded(grid) <- TRUE
-
-grid.sp  <- as(grid, "SpatialPoints")
-grid.df  <- data.frame(as.factor(1:length(grid.sp)))
-grid.spdf <- sp::SpatialPointsDataFrame(grid.sp, grid.df)
-hkd15hgrid  <-grid.spdf
-ge.sp2shpPrj(hkd15hgrid)
-ge.sp2shpPrj(bh.df)
-getwd()
-Tlog.trend  <-  krige(Tlog ~ x + y + z , spdf, grid)
-Tlog.trend.df  <- as.data.frame(Tlog.trend)
-levelplot(data = Tlog.trend.df, exp(var1.pred) ~ x*y| z,  contour=TRUE)
-#rgl::surface3d(Tlog.trend.df$x, Tlog.trend.df$y, Tlog.trend.df$z, col = rainbow(10))
-###
-Tlog.trend.lm <- lm(Tlog ~   z, spdf)
-summary(Tlog.trend.lm)
-
-plot(Tlog.trend.lm)
+# grid  <- hkd3dgrid
+# coordinates(grid) <- ~x+y+z
+# proj4string(grid)  <- CRS(lccWgs84)
+# gridded(grid) <- TRUE
+#
+# grid.sp  <- as(grid, "SpatialPoints")
+# grid.df  <- data.frame(as.factor(1:length(grid.sp)))
+# grid.spdf <- sp::SpatialPointsDataFrame(grid.sp, grid.df)
+# hkd15hgrid  <-grid.spdf
+# ge.sp2shpPrj(hkd15hgrid)
+# ge.sp2shpPrj(bh.df)
+# getwd()
+# Tlog.trend  <-  krige(Tlog ~ x + y + z , spdf, grid)
+# Tlog.trend.df  <- as.data.frame(Tlog.trend)
+# levelplot(data = Tlog.trend.df, exp(var1.pred) ~ x*y| z,  contour=TRUE)
+# #rgl::surface3d(Tlog.trend.df$x, Tlog.trend.df$y, Tlog.trend.df$z, col = rainbow(10))
+# ###
+# Tlog.trend.lm <- lm(Tlog ~   z, spdf)
+# summary(Tlog.trend.lm)
+#
+# plot(Tlog.trend.lm)
 
 
 
 head(grid)
 ### log plot
-vgmTlog <- variogram(Tlog ~ 1, spdf, cutoff = 100000)
+vgmTlog <- variogram(tlog ~ 1, spdf, cutoff = 100000)
 vgmTlog
 vgmTlog <- variogram(Tlog ~ 1, spdf,
                      boundaries = c(seq(100,1000,100), seq(2000,10000,1000)))
