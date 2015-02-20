@@ -45,7 +45,7 @@ vtext  <-
   vbase +
   geom_text(aes(x = 30000, y = 0.29), label = "sill = 0.155", angle = 0,
             family = "Times") +
-  geom_text(aes(x = 6000, y = 0.12), label = "sill = 0.125", angle = 0,
+  geom_text(aes(x = 6000, y = 0.11), label = "sill = 0.125", angle = 0,
             family = "Times") +
   geom_text(aes(x = 44000, y = 0.06), label = "Gaussian model \n (Vertical)", angle = 90,
             family = "Times") +
