@@ -21,7 +21,7 @@ vplot  <- ggplot() +
     geom_line(data = fitLine.df, aes(x = dist, y = gamma), size = 1, color = "red") +
     geom_point(data = vgmTlog, aes(x = dist, y = gamma), color = "blue")
     #geom_text(aes(label=np))
-vhline  <- vplot + geom_hline(yintercept = c(0.155, 0.28), linetype = 2, color = "green") +
+vhline  <- vplot + geom_hline(yintercept = c(0.125, 0.28), linetype = 2, color = "green") +
         geom_vline(xintercept = c(700, 35000), linetype = 4, color = "orange" )
 limitsX  <- c(0,45000)
 breaksX  <- seq(limitsX[1], limitsX[2], 5000)
