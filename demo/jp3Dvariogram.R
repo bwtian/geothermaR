@@ -51,6 +51,7 @@ v.eye1  <- vgm(psill = 0.155,  model = "Gau",  range=700,  nugget=0)
 v.eye   <- vgm(psill = 0.38,  model = "Exc",  range=35000,  nugget=0,  add.to=v.eye1)
 v.eye
 plot(vgmTlog, v.eye)
+
 # fit.variogram(vgmTlog,v.eye)
 ### grid
 # grid  <- hkd3dgrid
