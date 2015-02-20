@@ -1,6 +1,6 @@
 * Modis
 <2015-01-08 Thu> Download and Subset
-** TODO Japan 3D variogram
+* TODO Japan 3D variogram
 - State "TODO"       from ""           [2015-02-19 Thu 16:02]
 >>> short long
 >>> 1 Nug Nug (nugget)
