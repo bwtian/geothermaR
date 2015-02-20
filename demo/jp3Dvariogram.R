@@ -85,23 +85,23 @@ vbase  <- vhline +
 
 vtext  <-
         vbase +
-        geom_text(aes(x = 25000, y = 0.41), label = "sill = 0.275", angle = 0,
+        geom_text(aes(x = 20000, y = 0.42), label = "sill = 0.275", angle = 0,
                   family = "Times") +
         geom_text(aes(x = 6000, y = 0.14), label = "sill = 0.155", angle = 0,
                   family = "Times") +
-        geom_text(aes(x = 46000, y = 0.06), label = "Gaussian model \n (Vertical)", angle = 90,
+        geom_text(aes(x = 46000, y = 0.07), label = "Gaussian model \n (Vertical)", angle = 90,
                   family = "Times") +
-        geom_text(aes(x = 46000, y = 0.3), label = "Exponential class model \n (Lateral)", angle = 90,
+        geom_text(aes(x = 46000, y = 0.28), label = "Exponential class model \n (Lateral)", angle = 90,
                   family = "Times") +
         geom_text(aes(x = 6000, y = 0.02), label = "Range = 700 m", family = "Times") +
-        geom_text(aes(x = 25000, y = 0.25), label = "Range = 30 km", family = "Times")
+        geom_text(aes(x = 25000, y = 0.276), label = "Range = 30 km", family = "Times")
 # sd  <- sd(vgmTlog$gamma)
 # vtext + geom_ribbon(data = vgmTlog, aes(x = dist, ymin=gamma -2*sd, ymax=gamma+2*sd),alpha=1)
 jp3dVariogram  <- vtext +
         theme_bw(base_size = 12, base_family = "Times") +
         theme(axis.title.x=element_text(vjust = -0.5))
 jp3dVariogram
-# ggsave(plot jp3dVariogram, "hkdVariogram.pdf", width = 7, height = 5)
+ggsave(plot =jp3dVariogram, "jp3DVariogram.pdf", width = 7, height = 5)
 # # #ge.ggsave(hkdVariogram)
 # getwd()
 # ## grid$TlogUK.eye <- krige(Tlog~z, spdf, grid, model = v.eye)
