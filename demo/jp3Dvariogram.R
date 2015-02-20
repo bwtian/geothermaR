@@ -44,14 +44,14 @@ spdf0 <- remove.duplicates(spdf)
 spdf <- spdf0
 zerodist(spdf) ##check again
 vgmTlog <- variogram(tlog ~ z, spdf,
-                     boundaries = c(seq(100,1000,100), seq(10000,60000,5000)))
+                     boundaries = c(seq(100,1000,100), seq(10000,45000,5000)))
 plot(vgmTlog)
 show.vgms()
 v.eye1  <- vgm(psill = 0.155,  model = "Gau",  range=700,  nugget=0)
-v.eye   <- vgm(psill = 0.44,  model = "Exc",  range=60000,  nugget=0,  add.to=v.eye1)
+v.eye   <- vgm(psill = 0.4,  model = "Exc",  range=30000,  nugget=0,  add.to=v.eye1)
 v.eye
 plot(vgmTlog, v.eye)
-fitLine.df  <- variogramLine(v.eye, maxdist = 60000)
+fitLine.df  <- variogramLine(v.eye, maxdist = 45000)
 summary(v.eye)
 # plot.new()
 # plot(vgmTlog, v.eye, col = "red", lwd = 3, cex.lab=1.2,
@@ -63,8 +63,8 @@ vplot  <- ggplot() +
         geom_point(data = vgmTlog, aes(x = dist, y = gamma), color = "blue")
 vplot
 #geom_text(aes(label=np))
-vhline  <- vplot + geom_hline(yintercept = c(0.155, 0.44), linetype = 2, color = "green") +
-        geom_vline(xintercept = c(700, 35000), linetype = 4, color = "orange" )
+vhline  <- vplot + geom_hline(yintercept = c(0.155, 0.4), linetype = 2, color = "green") +
+        geom_vline(xintercept = c(700, 30000), linetype = 4, color = "orange" )
 limitsX  <- c(0,45000)
 breaksX  <- seq(limitsX[1], limitsX[2], 5000)
 labelsX=c(breaksX/1000)
@@ -85,16 +85,16 @@ vbase  <- vhline +
 
 vtext  <-
         vbase +
-        geom_text(aes(x = 30000, y = 0.29), label = "sill = 0.155", angle = 0,
+        geom_text(aes(x = 25000, y = 0.41), label = "sill = 0.275", angle = 0,
                   family = "Times") +
-        geom_text(aes(x = 6000, y = 0.14), label = "sill = 0.125", angle = 0,
+        geom_text(aes(x = 6000, y = 0.14), label = "sill = 0.155", angle = 0,
                   family = "Times") +
-        geom_text(aes(x = 44000, y = 0.08), label = "Gaussian model \n (Vertical)", angle = 90,
+        geom_text(aes(x = 46000, y = 0.06), label = "Gaussian model \n (Vertical)", angle = 90,
                   family = "Times") +
-        geom_text(aes(x = 44000, y = 0.21), label = "Spherical model \n (Lateral)", angle = 90,
+        geom_text(aes(x = 46000, y = 0.3), label = "Exponential class model \n (Lateral)", angle = 90,
                   family = "Times") +
         geom_text(aes(x = 6000, y = 0.02), label = "Range = 700 m", family = "Times") +
-        geom_text(aes(x = 30000, y = 0.18), label = "Range = 35 km", family = "Times")
+        geom_text(aes(x = 25000, y = 0.25), label = "Range = 30 km", family = "Times")
 # sd  <- sd(vgmTlog$gamma)
 # vtext + geom_ribbon(data = vgmTlog, aes(x = dist, ymin=gamma -2*sd, ymax=gamma+2*sd),alpha=1)
 jp3dVariogram  <- vtext +
