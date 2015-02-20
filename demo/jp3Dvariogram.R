@@ -30,7 +30,7 @@ plot(t,z)
 
 xyzv  <- as.data.frame(cbind(x,y,z,t,tlog))
 ###  Trend Surface Analysis
-plot(xyzv)
+# plot(xyzv)
 # pairs(xyzv)
 # class(xyzv)
 df  <- na.omit(xyzv)
@@ -44,12 +44,14 @@ spdf0 <- remove.duplicates(spdf)
 spdf <- spdf0
 zerodist(spdf) ##check again
 vgmTlog <- variogram(tlog ~ z, spdf,
-                     boundaries = c(seq(100,1000,100), seq(5000,45000,5000)))
+                     boundaries = c(seq(100,1000,100), seq(5000,50000,5000)))
 plot(vgmTlog)
+show.vgms()
 v.eye1  <- vgm(psill = 0.155,  model = "Gau",  range=700,  nugget=0)
-v.eye   <- vgm(psill = 0.125,  model = "Sph",  range=35000,  nugget=0,  add.to=v.eye1)
+v.eye   <- vgm(psill = 0.38,  model = "Exc",  range=35000,  nugget=0,  add.to=v.eye1)
 v.eye
 plot(vgmTlog, v.eye)
+# fit.variogram(vgmTlog,v.eye)
 ### grid
 # grid  <- hkd3dgrid
 # coordinates(grid) <- ~x+y+z
