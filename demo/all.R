@@ -711,8 +711,9 @@ ggplot(logt.uk.df]) +
 logt.uk.cv  <- krige.cv(logt ~ z, spdf, grid, model = uk.eye, nfold = 10)
 summary(logt.uk.cv)
 spplot(logt.uk.cv~, "zscore")
-### Check CrossValidation
+
 ge.cv <- function(cv, response){
+	   ### Check CrossValidation
         ### mean error, ideally should be 0
         me0  <- mean(cv$residual)
         me00  <- mean(cv$residual^2)
